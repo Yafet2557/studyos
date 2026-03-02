@@ -41,4 +41,4 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-/app/generated/prisma
+# app/generated/prisma is intentionally tracked — Turbopack requires it at build time

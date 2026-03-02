@@ -12,3 +12,116 @@ generator client {
 datasource db {
   provider = "postgresql"
 }
+
+// enums
+enum Status {
+  TODO
+  IN_PROGRESS
+  REVIEW
+  DONE
+}
+
+enum Priority {
+  LOW
+  MEDIUM
+  HIGH
+}
+
+enum EntityType {
+  ASSIGNMENT
+  NOTE
+}
+
+enum OutputType {
+  SUBTASKS
+  SUMMARY
+  QUESTIONS
+  PLAN
+}
+
+// models
+model User {
+  id          String       @id @default(cuid())
+  email       String       @unique
+  password    String
+  createdAt   DateTime     @default(now())
+  courses     Course[]
+  assignments Assignment[]
+  subtasks    Subtask[]
+  notes       Note[]
+  aiOutputs   AiOutput[]
+}
+
+model Course {
+  id          String       @id @default(cuid())
+  createdAt   DateTime     @default(now())
+  userId      String
+  user        User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  name        String
+  code        String?
+  color       String?
+  isActive    Boolean      @default(true)
+  assignments Assignment[]
+  notes       Note[]
+}
+
+model Assignment {
+  id             String     @id @default(cuid())
+  createdAt      DateTime   @default(now())
+  updatedAt      DateTime   @updatedAt
+  userId         String
+  user           User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  courseId       String?
+  course         Course?    @relation(fields: [courseId], references: [id], onDelete: SetNull)
+  title          String
+  description    String?
+  dueDate        DateTime?
+  status         Status     @default(TODO)
+  priority       Priority   @default(MEDIUM)
+  estimatedHours Decimal?   @db.Decimal(4, 1)
+  subtasks       Subtask[]
+  notes          Note[]
+  aiOutputs      AiOutput[]
+}
+
+model Subtask {
+  id           String     @id @default(cuid())
+  createdAt    DateTime   @default(now())
+  assignmentId String
+  assignment   Assignment @relation(fields: [assignmentId], references: [id], onDelete: Cascade)
+  userId       String
+  user         User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  title        String
+  isDone       Boolean    @default(false)
+  position     Int        @default(0)
+}
+
+model Note {
+  course       Course?     @relation(fields: [courseId], references: [id], onDelete: SetNull)
+  courseId     String?
+  id           String      @id @default(cuid())
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+  userId       String
+  user         User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  assignmentId String?
+  assignment   Assignment? @relation(fields: [assignmentId], references: [id], onDelete: SetNull)
+  title        String
+  content      String      @default("")
+  aiOutputs    AiOutput[]
+}
+
+model AiOutput {
+  id           String      @id @default(cuid())
+  createdAt    DateTime    @default(now())
+  userId       String
+  user         User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  entityType   EntityType
+  assignmentId String?
+  assignment   Assignment? @relation(fields: [assignmentId], references: [id], onDelete: Cascade)
+  noteId       String?
+  note         Note?       @relation(fields: [noteId], references: [id], onDelete: Cascade)
+  outputType   OutputType
+  content      Json
+  modelUsed    String
+}

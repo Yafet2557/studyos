@@ -71,3 +71,18 @@ export type Note = Prisma.NoteModel
  * 
  */
 export type AiOutput = Prisma.AiOutputModel
+/**
+ * Model StudyCard
+ * 
+ */
+export type StudyCard = Prisma.StudyCardModel
+/**
+ * Model StudyCardReview
+ * 
+ */
+export type StudyCardReview = Prisma.StudyCardReviewModel
+/**
+ * Model StudySession
+ * 
+ */
+export type StudySession = Prisma.StudySessionModel

@@ -39,17 +39,31 @@ enum OutputType {
   PLAN
 }
 
+enum CardSource {
+  NOTE
+  ASSIGNMENT
+  MANUAL
+}
+
+enum SessionType {
+  REVIEW
+  LEARN
+  CRAM
+}
+
 // models
 model User {
   id          String       @id @default(cuid())
   email       String       @unique
   password    String
   createdAt   DateTime     @default(now())
-  courses     Course[]
-  assignments Assignment[]
-  subtasks    Subtask[]
-  notes       Note[]
-  aiOutputs   AiOutput[]
+  courses       Course[]
+  assignments   Assignment[]
+  subtasks      Subtask[]
+  notes         Note[]
+  aiOutputs     AiOutput[]
+  studyCards    StudyCard[]
+  studySessions StudySession[]
 }
 
 model Course {
@@ -61,8 +75,10 @@ model Course {
   code        String?
   color       String?
   isActive    Boolean      @default(true)
-  assignments Assignment[]
-  notes       Note[]
+  assignments   Assignment[]
+  notes         Note[]
+  studyCards    StudyCard[]
+  studySessions StudySession[]
 }
 
 model Assignment {
@@ -109,6 +125,7 @@ model Note {
   title        String
   content      String      @default("")
   aiOutputs    AiOutput[]
+  studyCards   StudyCard[]
 }
 
 model AiOutput {
@@ -124,4 +141,61 @@ model AiOutput {
   outputType   OutputType
   content      Json
   modelUsed    String
+}
+
+model StudyCard {
+  id           String      @id @default(cuid())
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+  userId       String
+  user         User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  courseId      String?
+  course        Course?    @relation(fields: [courseId], references: [id], onDelete: SetNull)
+  noteId       String?
+  note         Note?       @relation(fields: [noteId], references: [id], onDelete: SetNull)
+  front        String
+  back         String
+  source       CardSource  @default(MANUAL)
+
+  // SM-2 spaced repetition fields
+  easeFactor   Float       @default(2.5)
+  interval     Int         @default(0)        // days until next review
+  repetitions  Int         @default(0)        // consecutive correct answers
+  nextReviewAt DateTime    @default(now())
+  lastReviewAt DateTime?
+
+  reviews      StudyCardReview[]
+
+  @@index([userId, nextReviewAt])
+  @@index([userId, courseId])
+}
+
+model StudyCardReview {
+  id           String      @id @default(cuid())
+  createdAt    DateTime    @default(now())
+  studyCardId  String
+  studyCard    StudyCard   @relation(fields: [studyCardId], references: [id], onDelete: Cascade)
+  sessionId    String
+  session      StudySession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  quality      Int         // SM-2 quality rating: 0-5
+  easeFactor   Float       // snapshot of easeFactor after this review
+  interval     Int         // snapshot of interval after this review
+}
+
+model StudySession {
+  id           String      @id @default(cuid())
+  createdAt    DateTime    @default(now())
+  userId       String
+  user         User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  courseId      String?
+  course        Course?    @relation(fields: [courseId], references: [id], onDelete: SetNull)
+  type         SessionType @default(REVIEW)
+  cardsStudied Int         @default(0)
+  correctCount Int         @default(0)
+  durationSecs Int?        // null if session is still in progress
+  completedAt  DateTime?
+
+  reviews      StudyCardReview[]
+
+  @@index([userId, createdAt])
 }

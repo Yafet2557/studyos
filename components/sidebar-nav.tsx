@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { LayoutDashboard, BookOpen, ClipboardList, FileText } from "lucide-react";
+import { LayoutDashboard, BookOpen, ClipboardList, FileText, Brain } from "lucide-react";
 import {
   SidebarMenu,
   SidebarMenuItem,
@@ -14,6 +14,7 @@ const navItems = [
   { label: "Courses", href: "/courses", icon: BookOpen },
   { label: "Assignments", href: "/assignments", icon: ClipboardList },
   { label: "Notes", href: "/notes", icon: FileText },
+  { label: "Study", href: "/study", icon: Brain },
 ];
 
 export function SidebarNav() {

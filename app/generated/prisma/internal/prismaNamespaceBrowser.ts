@@ -56,7 +56,10 @@ export const ModelName = {
   Assignment: 'Assignment',
   Subtask: 'Subtask',
   Note: 'Note',
-  AiOutput: 'AiOutput'
+  AiOutput: 'AiOutput',
+  StudyCard: 'StudyCard',
+  StudyCardReview: 'StudyCardReview',
+  StudySession: 'StudySession'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -155,6 +158,54 @@ export const AiOutputScalarFieldEnum = {
 } as const
 
 export type AiOutputScalarFieldEnum = (typeof AiOutputScalarFieldEnum)[keyof typeof AiOutputScalarFieldEnum]
+
+
+export const StudyCardScalarFieldEnum = {
+  id: 'id',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  userId: 'userId',
+  courseId: 'courseId',
+  noteId: 'noteId',
+  front: 'front',
+  back: 'back',
+  source: 'source',
+  easeFactor: 'easeFactor',
+  interval: 'interval',
+  repetitions: 'repetitions',
+  nextReviewAt: 'nextReviewAt',
+  lastReviewAt: 'lastReviewAt'
+} as const
+
+export type StudyCardScalarFieldEnum = (typeof StudyCardScalarFieldEnum)[keyof typeof StudyCardScalarFieldEnum]
+
+
+export const StudyCardReviewScalarFieldEnum = {
+  id: 'id',
+  createdAt: 'createdAt',
+  studyCardId: 'studyCardId',
+  sessionId: 'sessionId',
+  quality: 'quality',
+  easeFactor: 'easeFactor',
+  interval: 'interval'
+} as const
+
+export type StudyCardReviewScalarFieldEnum = (typeof StudyCardReviewScalarFieldEnum)[keyof typeof StudyCardReviewScalarFieldEnum]
+
+
+export const StudySessionScalarFieldEnum = {
+  id: 'id',
+  createdAt: 'createdAt',
+  userId: 'userId',
+  courseId: 'courseId',
+  type: 'type',
+  cardsStudied: 'cardsStudied',
+  correctCount: 'correctCount',
+  durationSecs: 'durationSecs',
+  completedAt: 'completedAt'
+} as const
+
+export type StudySessionScalarFieldEnum = (typeof StudySessionScalarFieldEnum)[keyof typeof StudySessionScalarFieldEnum]
 
 
 export const SortOrder = {

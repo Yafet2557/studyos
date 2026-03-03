@@ -201,6 +201,8 @@ export type CourseWhereInput = {
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   assignments?: Prisma.AssignmentListRelationFilter
   notes?: Prisma.NoteListRelationFilter
+  studyCards?: Prisma.StudyCardListRelationFilter
+  studySessions?: Prisma.StudySessionListRelationFilter
 }
 
 export type CourseOrderByWithRelationInput = {
@@ -214,6 +216,8 @@ export type CourseOrderByWithRelationInput = {
   user?: Prisma.UserOrderByWithRelationInput
   assignments?: Prisma.AssignmentOrderByRelationAggregateInput
   notes?: Prisma.NoteOrderByRelationAggregateInput
+  studyCards?: Prisma.StudyCardOrderByRelationAggregateInput
+  studySessions?: Prisma.StudySessionOrderByRelationAggregateInput
 }
 
 export type CourseWhereUniqueInput = Prisma.AtLeast<{
@@ -230,6 +234,8 @@ export type CourseWhereUniqueInput = Prisma.AtLeast<{
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   assignments?: Prisma.AssignmentListRelationFilter
   notes?: Prisma.NoteListRelationFilter
+  studyCards?: Prisma.StudyCardListRelationFilter
+  studySessions?: Prisma.StudySessionListRelationFilter
 }, "id">
 
 export type CourseOrderByWithAggregationInput = {
@@ -268,6 +274,8 @@ export type CourseCreateInput = {
   user: Prisma.UserCreateNestedOneWithoutCoursesInput
   assignments?: Prisma.AssignmentCreateNestedManyWithoutCourseInput
   notes?: Prisma.NoteCreateNestedManyWithoutCourseInput
+  studyCards?: Prisma.StudyCardCreateNestedManyWithoutCourseInput
+  studySessions?: Prisma.StudySessionCreateNestedManyWithoutCourseInput
 }
 
 export type CourseUncheckedCreateInput = {
@@ -280,6 +288,8 @@ export type CourseUncheckedCreateInput = {
   isActive?: boolean
   assignments?: Prisma.AssignmentUncheckedCreateNestedManyWithoutCourseInput
   notes?: Prisma.NoteUncheckedCreateNestedManyWithoutCourseInput
+  studyCards?: Prisma.StudyCardUncheckedCreateNestedManyWithoutCourseInput
+  studySessions?: Prisma.StudySessionUncheckedCreateNestedManyWithoutCourseInput
 }
 
 export type CourseUpdateInput = {
@@ -292,6 +302,8 @@ export type CourseUpdateInput = {
   user?: Prisma.UserUpdateOneRequiredWithoutCoursesNestedInput
   assignments?: Prisma.AssignmentUpdateManyWithoutCourseNestedInput
   notes?: Prisma.NoteUpdateManyWithoutCourseNestedInput
+  studyCards?: Prisma.StudyCardUpdateManyWithoutCourseNestedInput
+  studySessions?: Prisma.StudySessionUpdateManyWithoutCourseNestedInput
 }
 
 export type CourseUncheckedUpdateInput = {
@@ -304,6 +316,8 @@ export type CourseUncheckedUpdateInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   assignments?: Prisma.AssignmentUncheckedUpdateManyWithoutCourseNestedInput
   notes?: Prisma.NoteUncheckedUpdateManyWithoutCourseNestedInput
+  studyCards?: Prisma.StudyCardUncheckedUpdateManyWithoutCourseNestedInput
+  studySessions?: Prisma.StudySessionUncheckedUpdateManyWithoutCourseNestedInput
 }
 
 export type CourseCreateManyInput = {
@@ -462,6 +476,38 @@ export type CourseUpdateOneWithoutNotesNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.CourseUpdateToOneWithWhereWithoutNotesInput, Prisma.CourseUpdateWithoutNotesInput>, Prisma.CourseUncheckedUpdateWithoutNotesInput>
 }
 
+export type CourseCreateNestedOneWithoutStudyCardsInput = {
+  create?: Prisma.XOR<Prisma.CourseCreateWithoutStudyCardsInput, Prisma.CourseUncheckedCreateWithoutStudyCardsInput>
+  connectOrCreate?: Prisma.CourseCreateOrConnectWithoutStudyCardsInput
+  connect?: Prisma.CourseWhereUniqueInput
+}
+
+export type CourseUpdateOneWithoutStudyCardsNestedInput = {
+  create?: Prisma.XOR<Prisma.CourseCreateWithoutStudyCardsInput, Prisma.CourseUncheckedCreateWithoutStudyCardsInput>
+  connectOrCreate?: Prisma.CourseCreateOrConnectWithoutStudyCardsInput
+  upsert?: Prisma.CourseUpsertWithoutStudyCardsInput
+  disconnect?: Prisma.CourseWhereInput | boolean
+  delete?: Prisma.CourseWhereInput | boolean
+  connect?: Prisma.CourseWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.CourseUpdateToOneWithWhereWithoutStudyCardsInput, Prisma.CourseUpdateWithoutStudyCardsInput>, Prisma.CourseUncheckedUpdateWithoutStudyCardsInput>
+}
+
+export type CourseCreateNestedOneWithoutStudySessionsInput = {
+  create?: Prisma.XOR<Prisma.CourseCreateWithoutStudySessionsInput, Prisma.CourseUncheckedCreateWithoutStudySessionsInput>
+  connectOrCreate?: Prisma.CourseCreateOrConnectWithoutStudySessionsInput
+  connect?: Prisma.CourseWhereUniqueInput
+}
+
+export type CourseUpdateOneWithoutStudySessionsNestedInput = {
+  create?: Prisma.XOR<Prisma.CourseCreateWithoutStudySessionsInput, Prisma.CourseUncheckedCreateWithoutStudySessionsInput>
+  connectOrCreate?: Prisma.CourseCreateOrConnectWithoutStudySessionsInput
+  upsert?: Prisma.CourseUpsertWithoutStudySessionsInput
+  disconnect?: Prisma.CourseWhereInput | boolean
+  delete?: Prisma.CourseWhereInput | boolean
+  connect?: Prisma.CourseWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.CourseUpdateToOneWithWhereWithoutStudySessionsInput, Prisma.CourseUpdateWithoutStudySessionsInput>, Prisma.CourseUncheckedUpdateWithoutStudySessionsInput>
+}
+
 export type CourseCreateWithoutUserInput = {
   id?: string
   createdAt?: Date | string
@@ -471,6 +517,8 @@ export type CourseCreateWithoutUserInput = {
   isActive?: boolean
   assignments?: Prisma.AssignmentCreateNestedManyWithoutCourseInput
   notes?: Prisma.NoteCreateNestedManyWithoutCourseInput
+  studyCards?: Prisma.StudyCardCreateNestedManyWithoutCourseInput
+  studySessions?: Prisma.StudySessionCreateNestedManyWithoutCourseInput
 }
 
 export type CourseUncheckedCreateWithoutUserInput = {
@@ -482,6 +530,8 @@ export type CourseUncheckedCreateWithoutUserInput = {
   isActive?: boolean
   assignments?: Prisma.AssignmentUncheckedCreateNestedManyWithoutCourseInput
   notes?: Prisma.NoteUncheckedCreateNestedManyWithoutCourseInput
+  studyCards?: Prisma.StudyCardUncheckedCreateNestedManyWithoutCourseInput
+  studySessions?: Prisma.StudySessionUncheckedCreateNestedManyWithoutCourseInput
 }
 
 export type CourseCreateOrConnectWithoutUserInput = {
@@ -532,6 +582,8 @@ export type CourseCreateWithoutAssignmentsInput = {
   isActive?: boolean
   user: Prisma.UserCreateNestedOneWithoutCoursesInput
   notes?: Prisma.NoteCreateNestedManyWithoutCourseInput
+  studyCards?: Prisma.StudyCardCreateNestedManyWithoutCourseInput
+  studySessions?: Prisma.StudySessionCreateNestedManyWithoutCourseInput
 }
 
 export type CourseUncheckedCreateWithoutAssignmentsInput = {
@@ -543,6 +595,8 @@ export type CourseUncheckedCreateWithoutAssignmentsInput = {
   color?: string | null
   isActive?: boolean
   notes?: Prisma.NoteUncheckedCreateNestedManyWithoutCourseInput
+  studyCards?: Prisma.StudyCardUncheckedCreateNestedManyWithoutCourseInput
+  studySessions?: Prisma.StudySessionUncheckedCreateNestedManyWithoutCourseInput
 }
 
 export type CourseCreateOrConnectWithoutAssignmentsInput = {
@@ -570,6 +624,8 @@ export type CourseUpdateWithoutAssignmentsInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   user?: Prisma.UserUpdateOneRequiredWithoutCoursesNestedInput
   notes?: Prisma.NoteUpdateManyWithoutCourseNestedInput
+  studyCards?: Prisma.StudyCardUpdateManyWithoutCourseNestedInput
+  studySessions?: Prisma.StudySessionUpdateManyWithoutCourseNestedInput
 }
 
 export type CourseUncheckedUpdateWithoutAssignmentsInput = {
@@ -581,6 +637,8 @@ export type CourseUncheckedUpdateWithoutAssignmentsInput = {
   color?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   notes?: Prisma.NoteUncheckedUpdateManyWithoutCourseNestedInput
+  studyCards?: Prisma.StudyCardUncheckedUpdateManyWithoutCourseNestedInput
+  studySessions?: Prisma.StudySessionUncheckedUpdateManyWithoutCourseNestedInput
 }
 
 export type CourseCreateWithoutNotesInput = {
@@ -592,6 +650,8 @@ export type CourseCreateWithoutNotesInput = {
   isActive?: boolean
   user: Prisma.UserCreateNestedOneWithoutCoursesInput
   assignments?: Prisma.AssignmentCreateNestedManyWithoutCourseInput
+  studyCards?: Prisma.StudyCardCreateNestedManyWithoutCourseInput
+  studySessions?: Prisma.StudySessionCreateNestedManyWithoutCourseInput
 }
 
 export type CourseUncheckedCreateWithoutNotesInput = {
@@ -603,6 +663,8 @@ export type CourseUncheckedCreateWithoutNotesInput = {
   color?: string | null
   isActive?: boolean
   assignments?: Prisma.AssignmentUncheckedCreateNestedManyWithoutCourseInput
+  studyCards?: Prisma.StudyCardUncheckedCreateNestedManyWithoutCourseInput
+  studySessions?: Prisma.StudySessionUncheckedCreateNestedManyWithoutCourseInput
 }
 
 export type CourseCreateOrConnectWithoutNotesInput = {
@@ -630,6 +692,8 @@ export type CourseUpdateWithoutNotesInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   user?: Prisma.UserUpdateOneRequiredWithoutCoursesNestedInput
   assignments?: Prisma.AssignmentUpdateManyWithoutCourseNestedInput
+  studyCards?: Prisma.StudyCardUpdateManyWithoutCourseNestedInput
+  studySessions?: Prisma.StudySessionUpdateManyWithoutCourseNestedInput
 }
 
 export type CourseUncheckedUpdateWithoutNotesInput = {
@@ -641,6 +705,144 @@ export type CourseUncheckedUpdateWithoutNotesInput = {
   color?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   assignments?: Prisma.AssignmentUncheckedUpdateManyWithoutCourseNestedInput
+  studyCards?: Prisma.StudyCardUncheckedUpdateManyWithoutCourseNestedInput
+  studySessions?: Prisma.StudySessionUncheckedUpdateManyWithoutCourseNestedInput
+}
+
+export type CourseCreateWithoutStudyCardsInput = {
+  id?: string
+  createdAt?: Date | string
+  name: string
+  code?: string | null
+  color?: string | null
+  isActive?: boolean
+  user: Prisma.UserCreateNestedOneWithoutCoursesInput
+  assignments?: Prisma.AssignmentCreateNestedManyWithoutCourseInput
+  notes?: Prisma.NoteCreateNestedManyWithoutCourseInput
+  studySessions?: Prisma.StudySessionCreateNestedManyWithoutCourseInput
+}
+
+export type CourseUncheckedCreateWithoutStudyCardsInput = {
+  id?: string
+  createdAt?: Date | string
+  userId: string
+  name: string
+  code?: string | null
+  color?: string | null
+  isActive?: boolean
+  assignments?: Prisma.AssignmentUncheckedCreateNestedManyWithoutCourseInput
+  notes?: Prisma.NoteUncheckedCreateNestedManyWithoutCourseInput
+  studySessions?: Prisma.StudySessionUncheckedCreateNestedManyWithoutCourseInput
+}
+
+export type CourseCreateOrConnectWithoutStudyCardsInput = {
+  where: Prisma.CourseWhereUniqueInput
+  create: Prisma.XOR<Prisma.CourseCreateWithoutStudyCardsInput, Prisma.CourseUncheckedCreateWithoutStudyCardsInput>
+}
+
+export type CourseUpsertWithoutStudyCardsInput = {
+  update: Prisma.XOR<Prisma.CourseUpdateWithoutStudyCardsInput, Prisma.CourseUncheckedUpdateWithoutStudyCardsInput>
+  create: Prisma.XOR<Prisma.CourseCreateWithoutStudyCardsInput, Prisma.CourseUncheckedCreateWithoutStudyCardsInput>
+  where?: Prisma.CourseWhereInput
+}
+
+export type CourseUpdateToOneWithWhereWithoutStudyCardsInput = {
+  where?: Prisma.CourseWhereInput
+  data: Prisma.XOR<Prisma.CourseUpdateWithoutStudyCardsInput, Prisma.CourseUncheckedUpdateWithoutStudyCardsInput>
+}
+
+export type CourseUpdateWithoutStudyCardsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  color?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  user?: Prisma.UserUpdateOneRequiredWithoutCoursesNestedInput
+  assignments?: Prisma.AssignmentUpdateManyWithoutCourseNestedInput
+  notes?: Prisma.NoteUpdateManyWithoutCourseNestedInput
+  studySessions?: Prisma.StudySessionUpdateManyWithoutCourseNestedInput
+}
+
+export type CourseUncheckedUpdateWithoutStudyCardsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  color?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  assignments?: Prisma.AssignmentUncheckedUpdateManyWithoutCourseNestedInput
+  notes?: Prisma.NoteUncheckedUpdateManyWithoutCourseNestedInput
+  studySessions?: Prisma.StudySessionUncheckedUpdateManyWithoutCourseNestedInput
+}
+
+export type CourseCreateWithoutStudySessionsInput = {
+  id?: string
+  createdAt?: Date | string
+  name: string
+  code?: string | null
+  color?: string | null
+  isActive?: boolean
+  user: Prisma.UserCreateNestedOneWithoutCoursesInput
+  assignments?: Prisma.AssignmentCreateNestedManyWithoutCourseInput
+  notes?: Prisma.NoteCreateNestedManyWithoutCourseInput
+  studyCards?: Prisma.StudyCardCreateNestedManyWithoutCourseInput
+}
+
+export type CourseUncheckedCreateWithoutStudySessionsInput = {
+  id?: string
+  createdAt?: Date | string
+  userId: string
+  name: string
+  code?: string | null
+  color?: string | null
+  isActive?: boolean
+  assignments?: Prisma.AssignmentUncheckedCreateNestedManyWithoutCourseInput
+  notes?: Prisma.NoteUncheckedCreateNestedManyWithoutCourseInput
+  studyCards?: Prisma.StudyCardUncheckedCreateNestedManyWithoutCourseInput
+}
+
+export type CourseCreateOrConnectWithoutStudySessionsInput = {
+  where: Prisma.CourseWhereUniqueInput
+  create: Prisma.XOR<Prisma.CourseCreateWithoutStudySessionsInput, Prisma.CourseUncheckedCreateWithoutStudySessionsInput>
+}
+
+export type CourseUpsertWithoutStudySessionsInput = {
+  update: Prisma.XOR<Prisma.CourseUpdateWithoutStudySessionsInput, Prisma.CourseUncheckedUpdateWithoutStudySessionsInput>
+  create: Prisma.XOR<Prisma.CourseCreateWithoutStudySessionsInput, Prisma.CourseUncheckedCreateWithoutStudySessionsInput>
+  where?: Prisma.CourseWhereInput
+}
+
+export type CourseUpdateToOneWithWhereWithoutStudySessionsInput = {
+  where?: Prisma.CourseWhereInput
+  data: Prisma.XOR<Prisma.CourseUpdateWithoutStudySessionsInput, Prisma.CourseUncheckedUpdateWithoutStudySessionsInput>
+}
+
+export type CourseUpdateWithoutStudySessionsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  color?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  user?: Prisma.UserUpdateOneRequiredWithoutCoursesNestedInput
+  assignments?: Prisma.AssignmentUpdateManyWithoutCourseNestedInput
+  notes?: Prisma.NoteUpdateManyWithoutCourseNestedInput
+  studyCards?: Prisma.StudyCardUpdateManyWithoutCourseNestedInput
+}
+
+export type CourseUncheckedUpdateWithoutStudySessionsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  color?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  assignments?: Prisma.AssignmentUncheckedUpdateManyWithoutCourseNestedInput
+  notes?: Prisma.NoteUncheckedUpdateManyWithoutCourseNestedInput
+  studyCards?: Prisma.StudyCardUncheckedUpdateManyWithoutCourseNestedInput
 }
 
 export type CourseCreateManyUserInput = {
@@ -661,6 +863,8 @@ export type CourseUpdateWithoutUserInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   assignments?: Prisma.AssignmentUpdateManyWithoutCourseNestedInput
   notes?: Prisma.NoteUpdateManyWithoutCourseNestedInput
+  studyCards?: Prisma.StudyCardUpdateManyWithoutCourseNestedInput
+  studySessions?: Prisma.StudySessionUpdateManyWithoutCourseNestedInput
 }
 
 export type CourseUncheckedUpdateWithoutUserInput = {
@@ -672,6 +876,8 @@ export type CourseUncheckedUpdateWithoutUserInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   assignments?: Prisma.AssignmentUncheckedUpdateManyWithoutCourseNestedInput
   notes?: Prisma.NoteUncheckedUpdateManyWithoutCourseNestedInput
+  studyCards?: Prisma.StudyCardUncheckedUpdateManyWithoutCourseNestedInput
+  studySessions?: Prisma.StudySessionUncheckedUpdateManyWithoutCourseNestedInput
 }
 
 export type CourseUncheckedUpdateManyWithoutUserInput = {
@@ -691,11 +897,15 @@ export type CourseUncheckedUpdateManyWithoutUserInput = {
 export type CourseCountOutputType = {
   assignments: number
   notes: number
+  studyCards: number
+  studySessions: number
 }
 
 export type CourseCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   assignments?: boolean | CourseCountOutputTypeCountAssignmentsArgs
   notes?: boolean | CourseCountOutputTypeCountNotesArgs
+  studyCards?: boolean | CourseCountOutputTypeCountStudyCardsArgs
+  studySessions?: boolean | CourseCountOutputTypeCountStudySessionsArgs
 }
 
 /**
@@ -722,6 +932,20 @@ export type CourseCountOutputTypeCountNotesArgs<ExtArgs extends runtime.Types.Ex
   where?: Prisma.NoteWhereInput
 }
 
+/**
+ * CourseCountOutputType without action
+ */
+export type CourseCountOutputTypeCountStudyCardsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.StudyCardWhereInput
+}
+
+/**
+ * CourseCountOutputType without action
+ */
+export type CourseCountOutputTypeCountStudySessionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.StudySessionWhereInput
+}
+
 
 export type CourseSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -734,6 +958,8 @@ export type CourseSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   assignments?: boolean | Prisma.Course$assignmentsArgs<ExtArgs>
   notes?: boolean | Prisma.Course$notesArgs<ExtArgs>
+  studyCards?: boolean | Prisma.Course$studyCardsArgs<ExtArgs>
+  studySessions?: boolean | Prisma.Course$studySessionsArgs<ExtArgs>
   _count?: boolean | Prisma.CourseCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["course"]>
 
@@ -774,6 +1000,8 @@ export type CourseInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   assignments?: boolean | Prisma.Course$assignmentsArgs<ExtArgs>
   notes?: boolean | Prisma.Course$notesArgs<ExtArgs>
+  studyCards?: boolean | Prisma.Course$studyCardsArgs<ExtArgs>
+  studySessions?: boolean | Prisma.Course$studySessionsArgs<ExtArgs>
   _count?: boolean | Prisma.CourseCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type CourseIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -789,6 +1017,8 @@ export type $CoursePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
     user: Prisma.$UserPayload<ExtArgs>
     assignments: Prisma.$AssignmentPayload<ExtArgs>[]
     notes: Prisma.$NotePayload<ExtArgs>[]
+    studyCards: Prisma.$StudyCardPayload<ExtArgs>[]
+    studySessions: Prisma.$StudySessionPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1195,6 +1425,8 @@ export interface Prisma__CourseClient<T, Null = never, ExtArgs extends runtime.T
   user<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   assignments<T extends Prisma.Course$assignmentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Course$assignmentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AssignmentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   notes<T extends Prisma.Course$notesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Course$notesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$NotePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  studyCards<T extends Prisma.Course$studyCardsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Course$studyCardsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$StudyCardPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  studySessions<T extends Prisma.Course$studySessionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Course$studySessionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$StudySessionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1672,6 +1904,54 @@ export type Course$notesArgs<ExtArgs extends runtime.Types.Extensions.InternalAr
   take?: number
   skip?: number
   distinct?: Prisma.NoteScalarFieldEnum | Prisma.NoteScalarFieldEnum[]
+}
+
+/**
+ * Course.studyCards
+ */
+export type Course$studyCardsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the StudyCard
+   */
+  select?: Prisma.StudyCardSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the StudyCard
+   */
+  omit?: Prisma.StudyCardOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.StudyCardInclude<ExtArgs> | null
+  where?: Prisma.StudyCardWhereInput
+  orderBy?: Prisma.StudyCardOrderByWithRelationInput | Prisma.StudyCardOrderByWithRelationInput[]
+  cursor?: Prisma.StudyCardWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.StudyCardScalarFieldEnum | Prisma.StudyCardScalarFieldEnum[]
+}
+
+/**
+ * Course.studySessions
+ */
+export type Course$studySessionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the StudySession
+   */
+  select?: Prisma.StudySessionSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the StudySession
+   */
+  omit?: Prisma.StudySessionOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.StudySessionInclude<ExtArgs> | null
+  where?: Prisma.StudySessionWhereInput
+  orderBy?: Prisma.StudySessionOrderByWithRelationInput | Prisma.StudySessionOrderByWithRelationInput[]
+  cursor?: Prisma.StudySessionWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.StudySessionScalarFieldEnum | Prisma.StudySessionScalarFieldEnum[]
 }
 
 /**

@@ -210,6 +210,7 @@ export type NoteWhereInput = {
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   assignment?: Prisma.XOR<Prisma.AssignmentNullableScalarRelationFilter, Prisma.AssignmentWhereInput> | null
   aiOutputs?: Prisma.AiOutputListRelationFilter
+  studyCards?: Prisma.StudyCardListRelationFilter
 }
 
 export type NoteOrderByWithRelationInput = {
@@ -225,6 +226,7 @@ export type NoteOrderByWithRelationInput = {
   user?: Prisma.UserOrderByWithRelationInput
   assignment?: Prisma.AssignmentOrderByWithRelationInput
   aiOutputs?: Prisma.AiOutputOrderByRelationAggregateInput
+  studyCards?: Prisma.StudyCardOrderByRelationAggregateInput
 }
 
 export type NoteWhereUniqueInput = Prisma.AtLeast<{
@@ -243,6 +245,7 @@ export type NoteWhereUniqueInput = Prisma.AtLeast<{
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   assignment?: Prisma.XOR<Prisma.AssignmentNullableScalarRelationFilter, Prisma.AssignmentWhereInput> | null
   aiOutputs?: Prisma.AiOutputListRelationFilter
+  studyCards?: Prisma.StudyCardListRelationFilter
 }, "id">
 
 export type NoteOrderByWithAggregationInput = {
@@ -283,6 +286,7 @@ export type NoteCreateInput = {
   user: Prisma.UserCreateNestedOneWithoutNotesInput
   assignment?: Prisma.AssignmentCreateNestedOneWithoutNotesInput
   aiOutputs?: Prisma.AiOutputCreateNestedManyWithoutNoteInput
+  studyCards?: Prisma.StudyCardCreateNestedManyWithoutNoteInput
 }
 
 export type NoteUncheckedCreateInput = {
@@ -295,6 +299,7 @@ export type NoteUncheckedCreateInput = {
   title: string
   content?: string
   aiOutputs?: Prisma.AiOutputUncheckedCreateNestedManyWithoutNoteInput
+  studyCards?: Prisma.StudyCardUncheckedCreateNestedManyWithoutNoteInput
 }
 
 export type NoteUpdateInput = {
@@ -307,6 +312,7 @@ export type NoteUpdateInput = {
   user?: Prisma.UserUpdateOneRequiredWithoutNotesNestedInput
   assignment?: Prisma.AssignmentUpdateOneWithoutNotesNestedInput
   aiOutputs?: Prisma.AiOutputUpdateManyWithoutNoteNestedInput
+  studyCards?: Prisma.StudyCardUpdateManyWithoutNoteNestedInput
 }
 
 export type NoteUncheckedUpdateInput = {
@@ -319,6 +325,7 @@ export type NoteUncheckedUpdateInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   content?: Prisma.StringFieldUpdateOperationsInput | string
   aiOutputs?: Prisma.AiOutputUncheckedUpdateManyWithoutNoteNestedInput
+  studyCards?: Prisma.StudyCardUncheckedUpdateManyWithoutNoteNestedInput
 }
 
 export type NoteCreateManyInput = {
@@ -541,6 +548,22 @@ export type NoteUpdateOneWithoutAiOutputsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.NoteUpdateToOneWithWhereWithoutAiOutputsInput, Prisma.NoteUpdateWithoutAiOutputsInput>, Prisma.NoteUncheckedUpdateWithoutAiOutputsInput>
 }
 
+export type NoteCreateNestedOneWithoutStudyCardsInput = {
+  create?: Prisma.XOR<Prisma.NoteCreateWithoutStudyCardsInput, Prisma.NoteUncheckedCreateWithoutStudyCardsInput>
+  connectOrCreate?: Prisma.NoteCreateOrConnectWithoutStudyCardsInput
+  connect?: Prisma.NoteWhereUniqueInput
+}
+
+export type NoteUpdateOneWithoutStudyCardsNestedInput = {
+  create?: Prisma.XOR<Prisma.NoteCreateWithoutStudyCardsInput, Prisma.NoteUncheckedCreateWithoutStudyCardsInput>
+  connectOrCreate?: Prisma.NoteCreateOrConnectWithoutStudyCardsInput
+  upsert?: Prisma.NoteUpsertWithoutStudyCardsInput
+  disconnect?: Prisma.NoteWhereInput | boolean
+  delete?: Prisma.NoteWhereInput | boolean
+  connect?: Prisma.NoteWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.NoteUpdateToOneWithWhereWithoutStudyCardsInput, Prisma.NoteUpdateWithoutStudyCardsInput>, Prisma.NoteUncheckedUpdateWithoutStudyCardsInput>
+}
+
 export type NoteCreateWithoutUserInput = {
   id?: string
   createdAt?: Date | string
@@ -550,6 +573,7 @@ export type NoteCreateWithoutUserInput = {
   course?: Prisma.CourseCreateNestedOneWithoutNotesInput
   assignment?: Prisma.AssignmentCreateNestedOneWithoutNotesInput
   aiOutputs?: Prisma.AiOutputCreateNestedManyWithoutNoteInput
+  studyCards?: Prisma.StudyCardCreateNestedManyWithoutNoteInput
 }
 
 export type NoteUncheckedCreateWithoutUserInput = {
@@ -561,6 +585,7 @@ export type NoteUncheckedCreateWithoutUserInput = {
   title: string
   content?: string
   aiOutputs?: Prisma.AiOutputUncheckedCreateNestedManyWithoutNoteInput
+  studyCards?: Prisma.StudyCardUncheckedCreateNestedManyWithoutNoteInput
 }
 
 export type NoteCreateOrConnectWithoutUserInput = {
@@ -612,6 +637,7 @@ export type NoteCreateWithoutCourseInput = {
   user: Prisma.UserCreateNestedOneWithoutNotesInput
   assignment?: Prisma.AssignmentCreateNestedOneWithoutNotesInput
   aiOutputs?: Prisma.AiOutputCreateNestedManyWithoutNoteInput
+  studyCards?: Prisma.StudyCardCreateNestedManyWithoutNoteInput
 }
 
 export type NoteUncheckedCreateWithoutCourseInput = {
@@ -623,6 +649,7 @@ export type NoteUncheckedCreateWithoutCourseInput = {
   title: string
   content?: string
   aiOutputs?: Prisma.AiOutputUncheckedCreateNestedManyWithoutNoteInput
+  studyCards?: Prisma.StudyCardUncheckedCreateNestedManyWithoutNoteInput
 }
 
 export type NoteCreateOrConnectWithoutCourseInput = {
@@ -660,6 +687,7 @@ export type NoteCreateWithoutAssignmentInput = {
   course?: Prisma.CourseCreateNestedOneWithoutNotesInput
   user: Prisma.UserCreateNestedOneWithoutNotesInput
   aiOutputs?: Prisma.AiOutputCreateNestedManyWithoutNoteInput
+  studyCards?: Prisma.StudyCardCreateNestedManyWithoutNoteInput
 }
 
 export type NoteUncheckedCreateWithoutAssignmentInput = {
@@ -671,6 +699,7 @@ export type NoteUncheckedCreateWithoutAssignmentInput = {
   title: string
   content?: string
   aiOutputs?: Prisma.AiOutputUncheckedCreateNestedManyWithoutNoteInput
+  studyCards?: Prisma.StudyCardUncheckedCreateNestedManyWithoutNoteInput
 }
 
 export type NoteCreateOrConnectWithoutAssignmentInput = {
@@ -708,6 +737,7 @@ export type NoteCreateWithoutAiOutputsInput = {
   course?: Prisma.CourseCreateNestedOneWithoutNotesInput
   user: Prisma.UserCreateNestedOneWithoutNotesInput
   assignment?: Prisma.AssignmentCreateNestedOneWithoutNotesInput
+  studyCards?: Prisma.StudyCardCreateNestedManyWithoutNoteInput
 }
 
 export type NoteUncheckedCreateWithoutAiOutputsInput = {
@@ -719,6 +749,7 @@ export type NoteUncheckedCreateWithoutAiOutputsInput = {
   assignmentId?: string | null
   title: string
   content?: string
+  studyCards?: Prisma.StudyCardUncheckedCreateNestedManyWithoutNoteInput
 }
 
 export type NoteCreateOrConnectWithoutAiOutputsInput = {
@@ -746,6 +777,7 @@ export type NoteUpdateWithoutAiOutputsInput = {
   course?: Prisma.CourseUpdateOneWithoutNotesNestedInput
   user?: Prisma.UserUpdateOneRequiredWithoutNotesNestedInput
   assignment?: Prisma.AssignmentUpdateOneWithoutNotesNestedInput
+  studyCards?: Prisma.StudyCardUpdateManyWithoutNoteNestedInput
 }
 
 export type NoteUncheckedUpdateWithoutAiOutputsInput = {
@@ -757,6 +789,71 @@ export type NoteUncheckedUpdateWithoutAiOutputsInput = {
   assignmentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   title?: Prisma.StringFieldUpdateOperationsInput | string
   content?: Prisma.StringFieldUpdateOperationsInput | string
+  studyCards?: Prisma.StudyCardUncheckedUpdateManyWithoutNoteNestedInput
+}
+
+export type NoteCreateWithoutStudyCardsInput = {
+  id?: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  title: string
+  content?: string
+  course?: Prisma.CourseCreateNestedOneWithoutNotesInput
+  user: Prisma.UserCreateNestedOneWithoutNotesInput
+  assignment?: Prisma.AssignmentCreateNestedOneWithoutNotesInput
+  aiOutputs?: Prisma.AiOutputCreateNestedManyWithoutNoteInput
+}
+
+export type NoteUncheckedCreateWithoutStudyCardsInput = {
+  courseId?: string | null
+  id?: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  userId: string
+  assignmentId?: string | null
+  title: string
+  content?: string
+  aiOutputs?: Prisma.AiOutputUncheckedCreateNestedManyWithoutNoteInput
+}
+
+export type NoteCreateOrConnectWithoutStudyCardsInput = {
+  where: Prisma.NoteWhereUniqueInput
+  create: Prisma.XOR<Prisma.NoteCreateWithoutStudyCardsInput, Prisma.NoteUncheckedCreateWithoutStudyCardsInput>
+}
+
+export type NoteUpsertWithoutStudyCardsInput = {
+  update: Prisma.XOR<Prisma.NoteUpdateWithoutStudyCardsInput, Prisma.NoteUncheckedUpdateWithoutStudyCardsInput>
+  create: Prisma.XOR<Prisma.NoteCreateWithoutStudyCardsInput, Prisma.NoteUncheckedCreateWithoutStudyCardsInput>
+  where?: Prisma.NoteWhereInput
+}
+
+export type NoteUpdateToOneWithWhereWithoutStudyCardsInput = {
+  where?: Prisma.NoteWhereInput
+  data: Prisma.XOR<Prisma.NoteUpdateWithoutStudyCardsInput, Prisma.NoteUncheckedUpdateWithoutStudyCardsInput>
+}
+
+export type NoteUpdateWithoutStudyCardsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  content?: Prisma.StringFieldUpdateOperationsInput | string
+  course?: Prisma.CourseUpdateOneWithoutNotesNestedInput
+  user?: Prisma.UserUpdateOneRequiredWithoutNotesNestedInput
+  assignment?: Prisma.AssignmentUpdateOneWithoutNotesNestedInput
+  aiOutputs?: Prisma.AiOutputUpdateManyWithoutNoteNestedInput
+}
+
+export type NoteUncheckedUpdateWithoutStudyCardsInput = {
+  courseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  assignmentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  content?: Prisma.StringFieldUpdateOperationsInput | string
+  aiOutputs?: Prisma.AiOutputUncheckedUpdateManyWithoutNoteNestedInput
 }
 
 export type NoteCreateManyUserInput = {
@@ -778,6 +875,7 @@ export type NoteUpdateWithoutUserInput = {
   course?: Prisma.CourseUpdateOneWithoutNotesNestedInput
   assignment?: Prisma.AssignmentUpdateOneWithoutNotesNestedInput
   aiOutputs?: Prisma.AiOutputUpdateManyWithoutNoteNestedInput
+  studyCards?: Prisma.StudyCardUpdateManyWithoutNoteNestedInput
 }
 
 export type NoteUncheckedUpdateWithoutUserInput = {
@@ -789,6 +887,7 @@ export type NoteUncheckedUpdateWithoutUserInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   content?: Prisma.StringFieldUpdateOperationsInput | string
   aiOutputs?: Prisma.AiOutputUncheckedUpdateManyWithoutNoteNestedInput
+  studyCards?: Prisma.StudyCardUncheckedUpdateManyWithoutNoteNestedInput
 }
 
 export type NoteUncheckedUpdateManyWithoutUserInput = {
@@ -820,6 +919,7 @@ export type NoteUpdateWithoutCourseInput = {
   user?: Prisma.UserUpdateOneRequiredWithoutNotesNestedInput
   assignment?: Prisma.AssignmentUpdateOneWithoutNotesNestedInput
   aiOutputs?: Prisma.AiOutputUpdateManyWithoutNoteNestedInput
+  studyCards?: Prisma.StudyCardUpdateManyWithoutNoteNestedInput
 }
 
 export type NoteUncheckedUpdateWithoutCourseInput = {
@@ -831,6 +931,7 @@ export type NoteUncheckedUpdateWithoutCourseInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   content?: Prisma.StringFieldUpdateOperationsInput | string
   aiOutputs?: Prisma.AiOutputUncheckedUpdateManyWithoutNoteNestedInput
+  studyCards?: Prisma.StudyCardUncheckedUpdateManyWithoutNoteNestedInput
 }
 
 export type NoteUncheckedUpdateManyWithoutCourseInput = {
@@ -862,6 +963,7 @@ export type NoteUpdateWithoutAssignmentInput = {
   course?: Prisma.CourseUpdateOneWithoutNotesNestedInput
   user?: Prisma.UserUpdateOneRequiredWithoutNotesNestedInput
   aiOutputs?: Prisma.AiOutputUpdateManyWithoutNoteNestedInput
+  studyCards?: Prisma.StudyCardUpdateManyWithoutNoteNestedInput
 }
 
 export type NoteUncheckedUpdateWithoutAssignmentInput = {
@@ -873,6 +975,7 @@ export type NoteUncheckedUpdateWithoutAssignmentInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   content?: Prisma.StringFieldUpdateOperationsInput | string
   aiOutputs?: Prisma.AiOutputUncheckedUpdateManyWithoutNoteNestedInput
+  studyCards?: Prisma.StudyCardUncheckedUpdateManyWithoutNoteNestedInput
 }
 
 export type NoteUncheckedUpdateManyWithoutAssignmentInput = {
@@ -892,10 +995,12 @@ export type NoteUncheckedUpdateManyWithoutAssignmentInput = {
 
 export type NoteCountOutputType = {
   aiOutputs: number
+  studyCards: number
 }
 
 export type NoteCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   aiOutputs?: boolean | NoteCountOutputTypeCountAiOutputsArgs
+  studyCards?: boolean | NoteCountOutputTypeCountStudyCardsArgs
 }
 
 /**
@@ -915,6 +1020,13 @@ export type NoteCountOutputTypeCountAiOutputsArgs<ExtArgs extends runtime.Types.
   where?: Prisma.AiOutputWhereInput
 }
 
+/**
+ * NoteCountOutputType without action
+ */
+export type NoteCountOutputTypeCountStudyCardsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.StudyCardWhereInput
+}
+
 
 export type NoteSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   courseId?: boolean
@@ -929,6 +1041,7 @@ export type NoteSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   assignment?: boolean | Prisma.Note$assignmentArgs<ExtArgs>
   aiOutputs?: boolean | Prisma.Note$aiOutputsArgs<ExtArgs>
+  studyCards?: boolean | Prisma.Note$studyCardsArgs<ExtArgs>
   _count?: boolean | Prisma.NoteCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["note"]>
 
@@ -977,6 +1090,7 @@ export type NoteInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   assignment?: boolean | Prisma.Note$assignmentArgs<ExtArgs>
   aiOutputs?: boolean | Prisma.Note$aiOutputsArgs<ExtArgs>
+  studyCards?: boolean | Prisma.Note$studyCardsArgs<ExtArgs>
   _count?: boolean | Prisma.NoteCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type NoteIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -997,6 +1111,7 @@ export type $NotePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     user: Prisma.$UserPayload<ExtArgs>
     assignment: Prisma.$AssignmentPayload<ExtArgs> | null
     aiOutputs: Prisma.$AiOutputPayload<ExtArgs>[]
+    studyCards: Prisma.$StudyCardPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     courseId: string | null
@@ -1405,6 +1520,7 @@ export interface Prisma__NoteClient<T, Null = never, ExtArgs extends runtime.Typ
   user<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   assignment<T extends Prisma.Note$assignmentArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Note$assignmentArgs<ExtArgs>>): Prisma.Prisma__AssignmentClient<runtime.Types.Result.GetResult<Prisma.$AssignmentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   aiOutputs<T extends Prisma.Note$aiOutputsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Note$aiOutputsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AiOutputPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  studyCards<T extends Prisma.Note$studyCardsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Note$studyCardsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$StudyCardPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1897,6 +2013,30 @@ export type Note$aiOutputsArgs<ExtArgs extends runtime.Types.Extensions.Internal
   take?: number
   skip?: number
   distinct?: Prisma.AiOutputScalarFieldEnum | Prisma.AiOutputScalarFieldEnum[]
+}
+
+/**
+ * Note.studyCards
+ */
+export type Note$studyCardsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the StudyCard
+   */
+  select?: Prisma.StudyCardSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the StudyCard
+   */
+  omit?: Prisma.StudyCardOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.StudyCardInclude<ExtArgs> | null
+  where?: Prisma.StudyCardWhereInput
+  orderBy?: Prisma.StudyCardOrderByWithRelationInput | Prisma.StudyCardOrderByWithRelationInput[]
+  cursor?: Prisma.StudyCardWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.StudyCardScalarFieldEnum | Prisma.StudyCardScalarFieldEnum[]
 }
 
 /**

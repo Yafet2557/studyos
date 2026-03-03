@@ -43,6 +43,27 @@ Rules:
 - Clear and specific`;
 }
 
+export function flashcardGenerationPrompt(
+  noteTitle: string,
+  content: string
+): string {
+  return `Generate flashcards from the following notes to help a student memorize key concepts.
+
+Note: ${noteTitle}
+Content:
+${content}
+
+Return ONLY a JSON array of objects. Each object must have "front" and "back" string fields.
+Example: [{"front": "What is X?", "back": "X is Y because Z."}]
+
+Rules:
+- 5 to 12 cards
+- Front: a question or incomplete statement (under 150 chars)
+- Back: a complete answer or completion (under 300 chars)
+- Cover the most important concepts only
+- Prefer specific, testable facts over vague generalities`;
+}
+
 export function dailyPlanPrompt(context: string): string {
   return `You are a study planner. Based on the student's current assignments, create a focused daily study plan.
 

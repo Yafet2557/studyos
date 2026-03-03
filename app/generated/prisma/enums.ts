@@ -44,3 +44,21 @@ export const OutputType = {
 } as const
 
 export type OutputType = (typeof OutputType)[keyof typeof OutputType]
+
+
+export const CardSource = {
+  NOTE: 'NOTE',
+  ASSIGNMENT: 'ASSIGNMENT',
+  MANUAL: 'MANUAL'
+} as const
+
+export type CardSource = (typeof CardSource)[keyof typeof CardSource]
+
+
+export const SessionType = {
+  REVIEW: 'REVIEW',
+  LEARN: 'LEARN',
+  CRAM: 'CRAM'
+} as const
+
+export type SessionType = (typeof SessionType)[keyof typeof SessionType]

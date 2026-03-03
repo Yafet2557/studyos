@@ -389,7 +389,10 @@ export const ModelName = {
   Assignment: 'Assignment',
   Subtask: 'Subtask',
   Note: 'Note',
-  AiOutput: 'AiOutput'
+  AiOutput: 'AiOutput',
+  StudyCard: 'StudyCard',
+  StudyCardReview: 'StudyCardReview',
+  StudySession: 'StudySession'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -405,7 +408,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "course" | "assignment" | "subtask" | "note" | "aiOutput"
+    modelProps: "user" | "course" | "assignment" | "subtask" | "note" | "aiOutput" | "studyCard" | "studyCardReview" | "studySession"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -853,6 +856,228 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    StudyCard: {
+      payload: Prisma.$StudyCardPayload<ExtArgs>
+      fields: Prisma.StudyCardFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.StudyCardFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$StudyCardPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.StudyCardFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$StudyCardPayload>
+        }
+        findFirst: {
+          args: Prisma.StudyCardFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$StudyCardPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.StudyCardFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$StudyCardPayload>
+        }
+        findMany: {
+          args: Prisma.StudyCardFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$StudyCardPayload>[]
+        }
+        create: {
+          args: Prisma.StudyCardCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$StudyCardPayload>
+        }
+        createMany: {
+          args: Prisma.StudyCardCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.StudyCardCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$StudyCardPayload>[]
+        }
+        delete: {
+          args: Prisma.StudyCardDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$StudyCardPayload>
+        }
+        update: {
+          args: Prisma.StudyCardUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$StudyCardPayload>
+        }
+        deleteMany: {
+          args: Prisma.StudyCardDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.StudyCardUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.StudyCardUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$StudyCardPayload>[]
+        }
+        upsert: {
+          args: Prisma.StudyCardUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$StudyCardPayload>
+        }
+        aggregate: {
+          args: Prisma.StudyCardAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateStudyCard>
+        }
+        groupBy: {
+          args: Prisma.StudyCardGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.StudyCardGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.StudyCardCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.StudyCardCountAggregateOutputType> | number
+        }
+      }
+    }
+    StudyCardReview: {
+      payload: Prisma.$StudyCardReviewPayload<ExtArgs>
+      fields: Prisma.StudyCardReviewFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.StudyCardReviewFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$StudyCardReviewPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.StudyCardReviewFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$StudyCardReviewPayload>
+        }
+        findFirst: {
+          args: Prisma.StudyCardReviewFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$StudyCardReviewPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.StudyCardReviewFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$StudyCardReviewPayload>
+        }
+        findMany: {
+          args: Prisma.StudyCardReviewFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$StudyCardReviewPayload>[]
+        }
+        create: {
+          args: Prisma.StudyCardReviewCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$StudyCardReviewPayload>
+        }
+        createMany: {
+          args: Prisma.StudyCardReviewCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.StudyCardReviewCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$StudyCardReviewPayload>[]
+        }
+        delete: {
+          args: Prisma.StudyCardReviewDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$StudyCardReviewPayload>
+        }
+        update: {
+          args: Prisma.StudyCardReviewUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$StudyCardReviewPayload>
+        }
+        deleteMany: {
+          args: Prisma.StudyCardReviewDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.StudyCardReviewUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.StudyCardReviewUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$StudyCardReviewPayload>[]
+        }
+        upsert: {
+          args: Prisma.StudyCardReviewUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$StudyCardReviewPayload>
+        }
+        aggregate: {
+          args: Prisma.StudyCardReviewAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateStudyCardReview>
+        }
+        groupBy: {
+          args: Prisma.StudyCardReviewGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.StudyCardReviewGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.StudyCardReviewCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.StudyCardReviewCountAggregateOutputType> | number
+        }
+      }
+    }
+    StudySession: {
+      payload: Prisma.$StudySessionPayload<ExtArgs>
+      fields: Prisma.StudySessionFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.StudySessionFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$StudySessionPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.StudySessionFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$StudySessionPayload>
+        }
+        findFirst: {
+          args: Prisma.StudySessionFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$StudySessionPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.StudySessionFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$StudySessionPayload>
+        }
+        findMany: {
+          args: Prisma.StudySessionFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$StudySessionPayload>[]
+        }
+        create: {
+          args: Prisma.StudySessionCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$StudySessionPayload>
+        }
+        createMany: {
+          args: Prisma.StudySessionCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.StudySessionCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$StudySessionPayload>[]
+        }
+        delete: {
+          args: Prisma.StudySessionDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$StudySessionPayload>
+        }
+        update: {
+          args: Prisma.StudySessionUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$StudySessionPayload>
+        }
+        deleteMany: {
+          args: Prisma.StudySessionDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.StudySessionUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.StudySessionUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$StudySessionPayload>[]
+        }
+        upsert: {
+          args: Prisma.StudySessionUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$StudySessionPayload>
+        }
+        aggregate: {
+          args: Prisma.StudySessionAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateStudySession>
+        }
+        groupBy: {
+          args: Prisma.StudySessionGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.StudySessionGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.StudySessionCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.StudySessionCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -972,6 +1197,54 @@ export const AiOutputScalarFieldEnum = {
 } as const
 
 export type AiOutputScalarFieldEnum = (typeof AiOutputScalarFieldEnum)[keyof typeof AiOutputScalarFieldEnum]
+
+
+export const StudyCardScalarFieldEnum = {
+  id: 'id',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  userId: 'userId',
+  courseId: 'courseId',
+  noteId: 'noteId',
+  front: 'front',
+  back: 'back',
+  source: 'source',
+  easeFactor: 'easeFactor',
+  interval: 'interval',
+  repetitions: 'repetitions',
+  nextReviewAt: 'nextReviewAt',
+  lastReviewAt: 'lastReviewAt'
+} as const
+
+export type StudyCardScalarFieldEnum = (typeof StudyCardScalarFieldEnum)[keyof typeof StudyCardScalarFieldEnum]
+
+
+export const StudyCardReviewScalarFieldEnum = {
+  id: 'id',
+  createdAt: 'createdAt',
+  studyCardId: 'studyCardId',
+  sessionId: 'sessionId',
+  quality: 'quality',
+  easeFactor: 'easeFactor',
+  interval: 'interval'
+} as const
+
+export type StudyCardReviewScalarFieldEnum = (typeof StudyCardReviewScalarFieldEnum)[keyof typeof StudyCardReviewScalarFieldEnum]
+
+
+export const StudySessionScalarFieldEnum = {
+  id: 'id',
+  createdAt: 'createdAt',
+  userId: 'userId',
+  courseId: 'courseId',
+  type: 'type',
+  cardsStudied: 'cardsStudied',
+  correctCount: 'correctCount',
+  durationSecs: 'durationSecs',
+  completedAt: 'completedAt'
+} as const
+
+export type StudySessionScalarFieldEnum = (typeof StudySessionScalarFieldEnum)[keyof typeof StudySessionScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -1154,6 +1427,20 @@ export type EnumQueryModeFieldRefInput<$PrismaModel> = FieldRefInputType<$Prisma
 
 
 /**
+ * Reference to a field of type 'CardSource'
+ */
+export type EnumCardSourceFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CardSource'>
+    
+
+
+/**
+ * Reference to a field of type 'CardSource[]'
+ */
+export type ListEnumCardSourceFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CardSource[]'>
+    
+
+
+/**
  * Reference to a field of type 'Float'
  */
 export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
@@ -1164,6 +1451,20 @@ export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, '
  * Reference to a field of type 'Float[]'
  */
 export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
+    
+
+
+/**
+ * Reference to a field of type 'SessionType'
+ */
+export type EnumSessionTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SessionType'>
+    
+
+
+/**
+ * Reference to a field of type 'SessionType[]'
+ */
+export type ListEnumSessionTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SessionType[]'>
     
 
 /**
@@ -1267,6 +1568,9 @@ export type GlobalOmitConfig = {
   subtask?: Prisma.SubtaskOmit
   note?: Prisma.NoteOmit
   aiOutput?: Prisma.AiOutputOmit
+  studyCard?: Prisma.StudyCardOmit
+  studyCardReview?: Prisma.StudyCardReviewOmit
+  studySession?: Prisma.StudySessionOmit
 }
 
 /* Types for Logging */

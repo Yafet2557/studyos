@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { LayoutDashboard, BookOpen, ClipboardList, FileText, Brain, Timer } from "lucide-react";
+import { LayoutDashboard, BookOpen, ClipboardList, FileText, Brain, Timer, Settings } from "lucide-react";
 import {
   SidebarMenu,
   SidebarMenuItem,
@@ -16,6 +16,7 @@ const navItems = [
   { label: "Notes", href: "/notes", icon: FileText },
   { label: "Study", href: "/study", icon: Brain },
   { label: "Focus", href: "/focus", icon: Timer },
+  { label: "Settings", href: "/settings", icon: Settings },
 ];
 
 export function SidebarNav() {

@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useCallback } from "react";
 import { useRouter } from "next/navigation";
+import { useTheme } from "@/components/theme-provider";
 import { Command } from "cmdk";
 import {
   LayoutDashboard,
@@ -40,6 +41,7 @@ interface CommandGroup {
 
 export function CommandPalette() {
   const router = useRouter();
+  const { toggleTheme } = useTheme();
   const [open, setOpen] = useState(false);
 
   // Close and navigate
@@ -155,9 +157,10 @@ export function CommandPalette() {
           id: "theme-dark",
           label: "Toggle Dark Mode",
           icon: Moon,
-          hint: "coming soon",
-          disabled: true,
-          action: () => undefined,
+          action: () => {
+            toggleTheme();
+            setOpen(false);
+          },
         },
       ],
     },

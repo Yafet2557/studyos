@@ -1,56 +1,45 @@
-import Link from "next/link"
 import {
   Sidebar,
   SidebarContent,
   SidebarHeader,
-  SidebarMenu,
-  SidebarMenuItem,
-  SidebarMenuButton,
   SidebarFooter,
-} from "@/components/ui/sidebar"
-import { signOut } from "@/lib/auth"
-
-const navItems = [
-  { label: "Dashboard", href: "/dashboard" },
-  { label: "Courses", href: "/courses" },
-  { label: "Assignments", href: "/assignments" },
-  { label: "Notes", href: "/notes" },
-]
+} from "@/components/ui/sidebar";
+import { signOut } from "@/lib/auth";
+import { SidebarNav } from "@/components/sidebar-nav";
+import { LogOut } from "lucide-react";
 
 async function logout() {
-  "use server"
-  await signOut({ redirectTo: "/login" })
+  "use server";
+  await signOut({ redirectTo: "/login" });
 }
 
 export function AppSidebar() {
   return (
-    <Sidebar>
-      <SidebarHeader className="px-4 py-3">
-        <span className="text-lg font-semibold">StudyOS</span>
+    <Sidebar className="border-r border-border/60">
+      <SidebarHeader className="px-5 py-5 border-b border-border/40">
+        <div className="flex items-center gap-2.5">
+          <div className="w-6 h-6 rounded bg-primary flex items-center justify-center flex-shrink-0">
+            <span className="text-primary-foreground text-xs font-bold leading-none">S</span>
+          </div>
+          <span className="font-serif text-lg tracking-tight text-foreground">StudyOS</span>
+        </div>
       </SidebarHeader>
 
-      <SidebarContent>
-        <SidebarMenu>
-          {navItems.map((item) => (
-            <SidebarMenuItem key={item.href}>
-              <SidebarMenuButton asChild>
-                <Link href={item.href}>{item.label}</Link>
-              </SidebarMenuButton>
-            </SidebarMenuItem>
-          ))}
-        </SidebarMenu>
+      <SidebarContent className="px-3 py-4">
+        <SidebarNav />
       </SidebarContent>
 
-      <SidebarFooter className="px-2 pb-3">
+      <SidebarFooter className="px-3 pb-4 pt-2 border-t border-border/40">
         <form action={logout}>
           <button
             type="submit"
-            className="w-full text-left px-2 py-1.5 text-sm text-gray-500 hover:text-gray-900 rounded"
+            className="w-full flex items-center gap-3 px-3 py-2 text-sm text-muted-foreground hover:text-foreground hover:bg-accent rounded-md transition-colors"
           >
+            <LogOut className="h-4 w-4" />
             Sign out
           </button>
         </form>
       </SidebarFooter>
     </Sidebar>
-  )
+  );
 }

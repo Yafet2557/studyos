@@ -1,60 +1,89 @@
-# Session Summary
+# StudyOS Session Summary
 
-## Current Phase
-Phase 1 — Foundation (Days 1–3) — 90% done, blocked on build error
+## Current Phase: Phase 6 (Tests + CI/CD) — NOT STARTED
 
 ## What's Done
-- Next.js 15 (actually 16.1.6) scaffolded
-- Docker + Postgres running
-- Prisma schema written and migrated (all 6 models, 4 enums)
-- `lib/prisma.ts` singleton
-- `lib/auth.ts` — NextAuth v5 beta (5.0.0-beta.30) credentials config
-- `middleware.ts` — route protection
-- `app/api/auth/[...nextauth]/route.ts`
-- `app/(auth)/login/page.tsx` and `app/(auth)/signup/page.tsx`
-- `app/(app)/layout.tsx` with shadcn sidebar
-- `components/app-sidebar.tsx`
-- shadcn/ui installed with sidebar component
 
-## Build Blocker — Two Issues
+### Phase 1 — Foundation ✅
+- Next.js 15, Prisma 6 (driver adapter via `@prisma/adapter-pg`), PostgreSQL (Docker)
+- NextAuth v5 beta.30, signup/login pages, sidebar layout with shadcn
 
-### Issue 1: Edge Runtime + Prisma
-`middleware.ts` imports `auth` → `lib/auth.ts` → `lib/prisma.ts` → Prisma client
-Prisma uses Node.js APIs (`node:path`, `node:url`) that don't run in Edge Runtime.
+### Phase 2 — Course + Assignment CRUD ✅
+- `lib/actions/course.ts`, `lib/actions/assignment.ts`, `lib/actions/subtask.ts`
+- `lib/validations/` — Zod v4 schemas
+- `lib/auth-utils.ts` — `getUser()` helper
+- `lib/utils/urgency.ts` — urgency scoring + `sortByUrgency()`
+- `lib/types.ts` — `SerializedAssignment` + `serializeAssignment()` (Decimal → string)
+- `/courses`, `/courses/[courseId]`, `/assignments`, `/assignments/[assignmentId]`
+- Subtask checklist with add/toggle/delete
 
-**Fix needed:** Split auth config into two files:
-- `auth.config.ts` — edge-compatible, no Prisma (just session strategy + pages config)
-- `lib/auth.ts` — full auth with credentials + Prisma (server only)
-- `middleware.ts` should import from `auth.config.ts`, not `lib/auth.ts`
+### Phase 3 — AI Breakdown ✅
+- `app/api/ai/breakdown/route.ts` — auth, ownership, optional PDF doc block, Claude haiku, `prisma.$transaction` for atomic subtask replace
+- `components/assignments/breakdown-button.tsx` — file input (PDF/txt/md, 5MB), base64 via FileReader
+- `lib/ai/prompts.ts` — `subtaskBreakdownPrompt(title, description?, hasDocument?)`
 
-### Issue 2: PrismaClient constructor requires argument
-With `provider = "prisma-client"` generator, `new PrismaClient()` needs 1 argument.
-Need to check `app/generated/prisma/client.ts` to see what the constructor signature expects.
-Current state: `prisma/schema.prisma` uses `provider = "prisma-client"` with `output = "../app/generated/prisma"`
-Import in `lib/prisma.ts` is `from '@/app/generated/prisma/client'` (correct — points to specific file not directory)
+### Phase 3.5 — ICS Import (Assignments Tab) ✅
+- `app/api/import/ics/route.ts` — preview: parse ICS, group by CATEGORIES field (regex fallback), filter < 30 days old
+- `app/api/import/ics/confirm/route.ts` — write courses + assignments, dedup by title+courseId
+- `components/assignments/ics-import-dialog.tsx` — 3-step dialog: URL → preview → success
+- `components/assignments/assignment-list-client.tsx` — "Import from Econestoga" button
+- **Fix**: `next.config.ts` has `serverExternalPackages: ["node-ical"]` — required to prevent BigInt crash
 
-## Current File States
-- `prisma/schema.prisma` — `provider = "prisma-client"`, `output = "../app/generated/prisma"`
-- `lib/prisma.ts` — imports from `@/app/generated/prisma/client`, uses `new PrismaClient()` (needs fix)
-- `.gitignore` — `/app/generated/prisma` entry is commented out (intentionally tracked)
-- `package.json` — build script: `"prisma generate && next build"`
-- `next-auth` version: `5.0.0-beta.30`
+### Phase 3.6 — Course-Specific ICS Import ✅
+- `app/api/import/ics/course/route.ts` — preview for known courseId, no course name extraction
+- `app/api/import/ics/course/confirm/route.ts` — write assignments to known course, dedup
+- `components/courses/course-ics-import-dialog.tsx` — 3-step dialog
+- `components/courses/course-detail-client.tsx` — "Import ICS" button added next to 3-dot menu
 
-## Next Session — Do This First
-1. Check `app/generated/prisma/client.ts` line 30+ to see PrismaClient constructor signature
-2. Fix `lib/prisma.ts` with correct constructor call
-3. Create `auth.config.ts` (edge-safe, no Prisma) and update `middleware.ts` to import from it
-4. Run `npm run build` and get a clean build
-5. Then run `npm run dev`, test signup + login flow end-to-end
+### Phase 4 — Notes ✅
+- `lib/validations/note.ts`, `lib/actions/note.ts` — CRUD with ownership checks
+- `app/api/ai/summarize/route.ts` — haiku, stores AiOutput (outputType: SUMMARY)
+- `app/api/ai/questions/route.ts` — haiku, parses JSON array, stores (outputType: QUESTIONS)
+- `app/(app)/notes/page.tsx`, `app/(app)/notes/[noteId]/page.tsx`
+- `components/notes/note-form.tsx`, `note-list-client.tsx`, `note-editor.tsx`, `note-ai-panel.tsx`, `note-detail-client.tsx`
+- Note editor: full-width textarea + Eye/EyeOff toggle for preview — NOT side-by-side
 
-## Also Pending
-- Next.js 16 deprecated `middleware.ts` in favor of `proxy.ts` — just a warning for now, not breaking
-- Need to create stub pages for `/dashboard`, `/courses`, `/assignments`, `/notes` so routes exist
-- Need to add `NEXTAUTH_SECRET` to `.env` (currently just a placeholder)
+### Phase 5 — Dashboard ✅
+- `app/api/ai/plan/route.ts` — caches one plan/day in AiOutput (outputType: PLAN), `force: true` bypasses cache, uses `claude-haiku-4-5`
+- `app/(app)/dashboard/page.tsx` — 5 parallel Prisma queries
+- `components/dashboard/daily-briefing.tsx` — shows cached plan or "Generate Plan" button; ↻ forces regenerate
+- `components/dashboard/dashboard-stats.tsx` — 2 stat cards: Overdue (red), Due this week (amber)
+- `components/dashboard/upcoming-assignments.tsx` — top 5 non-done by due date
+- `components/dashboard/recent-notes.tsx` — last 4 notes, relative timestamps
 
-## Key Decisions Made
-- Yafet writes feature code, Claude reviews + guides
-- Claude does commits, no co-author tags
-- Prisma 7 `provider = "prisma-client"` requires explicit output + specific file import
-- `@prisma/client` in Prisma 7 is a factory, NOT directly instantiable — must use generated client
-- Generated client tracked in git (not gitignored) so Turbopack can resolve it at build time
+### Security Fixes ✅
+- IDOR on courseId: `verifyCourseOwnership()` in `lib/actions/assignment.ts`
+- Null-clearing for dueDate/estimatedHours on update
+- Runtime Zod validation for status/priority enums
+- `prisma.$transaction` for atomic subtask delete+createMany
+- File validation: 5MB limit + media type allowlist in breakdown route
+- `req.json()` in try/catch across all API routes
+
+### UI Fixes ✅
+- `assignment-card.tsx` — hover trash icon (sibling of Link, no stopPropagation needed)
+- `subtask-list.tsx` — uses `SerializedSubtask[]` not `Subtask[]`
+
+## Pending
+
+### Phase 6 — Tests + CI/CD + Docker
+- Jest tests:
+  - `lib/utils/urgency.ts` — pure function, easy
+  - `components/assignments/assignment-card.tsx` — status badge renders correctly
+  - `app/api/ai/breakdown/route.ts` — serves cached AiOutput, skips Claude call
+- GitHub Actions: `.github/workflows/ci.yml` — install, lint, tsc, test
+- Dockerfile for app container (docker-compose already exists for postgres)
+
+### Phase 7 — Polish
+- Mobile-responsive nav
+- Error boundaries on client components
+- Empty states with CTAs
+- Loading skeletons on dashboard
+
+## Key Conventions (repeat these to next session)
+- Prisma client: `import { prisma } from "@/lib/prisma"` — never `@prisma/client` directly
+- Generated client at `@/app/generated/prisma/client`
+- API route auth: `const session = await auth(); if (!session?.user?.id) return 401`
+- Server action/page auth: `const userId = await getUser()` from `@/lib/auth-utils`
+- Zod v4: `.issues[0].message` not `.errors[0].message`
+- `SerializedAssignment` / `SerializedSubtask` for server→client boundary
+- `tsc --noEmit` was clean at end of this session

@@ -1,5 +1,6 @@
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/app-sidebar";
+import { CommandPalette } from "@/components/command-palette";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const now = new Date();
@@ -21,6 +22,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           {children}
         </div>
       </main>
+      <CommandPalette />
     </SidebarProvider>
   );
 }

@@ -64,6 +64,7 @@ model User {
   aiOutputs     AiOutput[]
   studyCards    StudyCard[]
   studySessions StudySession[]
+  focusSessions FocusSession[]
 }
 
 model Course {
@@ -79,6 +80,7 @@ model Course {
   notes         Note[]
   studyCards    StudyCard[]
   studySessions StudySession[]
+  focusSessions FocusSession[]
 }
 
 model Assignment {
@@ -98,6 +100,7 @@ model Assignment {
   subtasks       Subtask[]
   notes          Note[]
   aiOutputs      AiOutput[]
+  focusSessions  FocusSession[]
 }
 
 model Subtask {
@@ -196,6 +199,23 @@ model StudySession {
   completedAt  DateTime?
 
   reviews      StudyCardReview[]
+
+  @@index([userId, createdAt])
+}
+
+model FocusSession {
+  id           String      @id @default(cuid())
+  createdAt    DateTime    @default(now())
+  userId       String
+  user         User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  courseId     String?
+  course       Course?     @relation(fields: [courseId], references: [id], onDelete: SetNull)
+  assignmentId String?
+  assignment   Assignment? @relation(fields: [assignmentId], references: [id], onDelete: SetNull)
+  durationMins Int
+  actualSecs   Int?
+  completedAt  DateTime?
+  label        String?
 
   @@index([userId, createdAt])
 }

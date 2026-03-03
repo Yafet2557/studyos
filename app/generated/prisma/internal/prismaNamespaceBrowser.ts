@@ -59,7 +59,8 @@ export const ModelName = {
   AiOutput: 'AiOutput',
   StudyCard: 'StudyCard',
   StudyCardReview: 'StudyCardReview',
-  StudySession: 'StudySession'
+  StudySession: 'StudySession',
+  FocusSession: 'FocusSession'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -206,6 +207,21 @@ export const StudySessionScalarFieldEnum = {
 } as const
 
 export type StudySessionScalarFieldEnum = (typeof StudySessionScalarFieldEnum)[keyof typeof StudySessionScalarFieldEnum]
+
+
+export const FocusSessionScalarFieldEnum = {
+  id: 'id',
+  createdAt: 'createdAt',
+  userId: 'userId',
+  courseId: 'courseId',
+  assignmentId: 'assignmentId',
+  durationMins: 'durationMins',
+  actualSecs: 'actualSecs',
+  completedAt: 'completedAt',
+  label: 'label'
+} as const
+
+export type FocusSessionScalarFieldEnum = (typeof FocusSessionScalarFieldEnum)[keyof typeof FocusSessionScalarFieldEnum]
 
 
 export const SortOrder = {

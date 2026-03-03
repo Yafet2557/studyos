@@ -20,6 +20,7 @@ export const config = {
         "/assignments/:path*",
         "/notes/:path*",
         "/study/:path*",
+        "/focus/:path*",
         "/api/((?!auth).*)",
     ],
 };

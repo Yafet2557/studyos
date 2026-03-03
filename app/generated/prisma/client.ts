@@ -86,3 +86,8 @@ export type StudyCardReview = Prisma.StudyCardReviewModel
  * 
  */
 export type StudySession = Prisma.StudySessionModel
+/**
+ * Model FocusSession
+ * 
+ */
+export type FocusSession = Prisma.FocusSessionModel

@@ -269,6 +269,7 @@ export type AssignmentWhereInput = {
   subtasks?: Prisma.SubtaskListRelationFilter
   notes?: Prisma.NoteListRelationFilter
   aiOutputs?: Prisma.AiOutputListRelationFilter
+  focusSessions?: Prisma.FocusSessionListRelationFilter
 }
 
 export type AssignmentOrderByWithRelationInput = {
@@ -288,6 +289,7 @@ export type AssignmentOrderByWithRelationInput = {
   subtasks?: Prisma.SubtaskOrderByRelationAggregateInput
   notes?: Prisma.NoteOrderByRelationAggregateInput
   aiOutputs?: Prisma.AiOutputOrderByRelationAggregateInput
+  focusSessions?: Prisma.FocusSessionOrderByRelationAggregateInput
 }
 
 export type AssignmentWhereUniqueInput = Prisma.AtLeast<{
@@ -310,6 +312,7 @@ export type AssignmentWhereUniqueInput = Prisma.AtLeast<{
   subtasks?: Prisma.SubtaskListRelationFilter
   notes?: Prisma.NoteListRelationFilter
   aiOutputs?: Prisma.AiOutputListRelationFilter
+  focusSessions?: Prisma.FocusSessionListRelationFilter
 }, "id">
 
 export type AssignmentOrderByWithAggregationInput = {
@@ -363,6 +366,7 @@ export type AssignmentCreateInput = {
   subtasks?: Prisma.SubtaskCreateNestedManyWithoutAssignmentInput
   notes?: Prisma.NoteCreateNestedManyWithoutAssignmentInput
   aiOutputs?: Prisma.AiOutputCreateNestedManyWithoutAssignmentInput
+  focusSessions?: Prisma.FocusSessionCreateNestedManyWithoutAssignmentInput
 }
 
 export type AssignmentUncheckedCreateInput = {
@@ -380,6 +384,7 @@ export type AssignmentUncheckedCreateInput = {
   subtasks?: Prisma.SubtaskUncheckedCreateNestedManyWithoutAssignmentInput
   notes?: Prisma.NoteUncheckedCreateNestedManyWithoutAssignmentInput
   aiOutputs?: Prisma.AiOutputUncheckedCreateNestedManyWithoutAssignmentInput
+  focusSessions?: Prisma.FocusSessionUncheckedCreateNestedManyWithoutAssignmentInput
 }
 
 export type AssignmentUpdateInput = {
@@ -397,6 +402,7 @@ export type AssignmentUpdateInput = {
   subtasks?: Prisma.SubtaskUpdateManyWithoutAssignmentNestedInput
   notes?: Prisma.NoteUpdateManyWithoutAssignmentNestedInput
   aiOutputs?: Prisma.AiOutputUpdateManyWithoutAssignmentNestedInput
+  focusSessions?: Prisma.FocusSessionUpdateManyWithoutAssignmentNestedInput
 }
 
 export type AssignmentUncheckedUpdateInput = {
@@ -414,6 +420,7 @@ export type AssignmentUncheckedUpdateInput = {
   subtasks?: Prisma.SubtaskUncheckedUpdateManyWithoutAssignmentNestedInput
   notes?: Prisma.NoteUncheckedUpdateManyWithoutAssignmentNestedInput
   aiOutputs?: Prisma.AiOutputUncheckedUpdateManyWithoutAssignmentNestedInput
+  focusSessions?: Prisma.FocusSessionUncheckedUpdateManyWithoutAssignmentNestedInput
 }
 
 export type AssignmentCreateManyInput = {
@@ -676,6 +683,22 @@ export type AssignmentUpdateOneWithoutAiOutputsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.AssignmentUpdateToOneWithWhereWithoutAiOutputsInput, Prisma.AssignmentUpdateWithoutAiOutputsInput>, Prisma.AssignmentUncheckedUpdateWithoutAiOutputsInput>
 }
 
+export type AssignmentCreateNestedOneWithoutFocusSessionsInput = {
+  create?: Prisma.XOR<Prisma.AssignmentCreateWithoutFocusSessionsInput, Prisma.AssignmentUncheckedCreateWithoutFocusSessionsInput>
+  connectOrCreate?: Prisma.AssignmentCreateOrConnectWithoutFocusSessionsInput
+  connect?: Prisma.AssignmentWhereUniqueInput
+}
+
+export type AssignmentUpdateOneWithoutFocusSessionsNestedInput = {
+  create?: Prisma.XOR<Prisma.AssignmentCreateWithoutFocusSessionsInput, Prisma.AssignmentUncheckedCreateWithoutFocusSessionsInput>
+  connectOrCreate?: Prisma.AssignmentCreateOrConnectWithoutFocusSessionsInput
+  upsert?: Prisma.AssignmentUpsertWithoutFocusSessionsInput
+  disconnect?: Prisma.AssignmentWhereInput | boolean
+  delete?: Prisma.AssignmentWhereInput | boolean
+  connect?: Prisma.AssignmentWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.AssignmentUpdateToOneWithWhereWithoutFocusSessionsInput, Prisma.AssignmentUpdateWithoutFocusSessionsInput>, Prisma.AssignmentUncheckedUpdateWithoutFocusSessionsInput>
+}
+
 export type AssignmentCreateWithoutUserInput = {
   id?: string
   createdAt?: Date | string
@@ -690,6 +713,7 @@ export type AssignmentCreateWithoutUserInput = {
   subtasks?: Prisma.SubtaskCreateNestedManyWithoutAssignmentInput
   notes?: Prisma.NoteCreateNestedManyWithoutAssignmentInput
   aiOutputs?: Prisma.AiOutputCreateNestedManyWithoutAssignmentInput
+  focusSessions?: Prisma.FocusSessionCreateNestedManyWithoutAssignmentInput
 }
 
 export type AssignmentUncheckedCreateWithoutUserInput = {
@@ -706,6 +730,7 @@ export type AssignmentUncheckedCreateWithoutUserInput = {
   subtasks?: Prisma.SubtaskUncheckedCreateNestedManyWithoutAssignmentInput
   notes?: Prisma.NoteUncheckedCreateNestedManyWithoutAssignmentInput
   aiOutputs?: Prisma.AiOutputUncheckedCreateNestedManyWithoutAssignmentInput
+  focusSessions?: Prisma.FocusSessionUncheckedCreateNestedManyWithoutAssignmentInput
 }
 
 export type AssignmentCreateOrConnectWithoutUserInput = {
@@ -765,6 +790,7 @@ export type AssignmentCreateWithoutCourseInput = {
   subtasks?: Prisma.SubtaskCreateNestedManyWithoutAssignmentInput
   notes?: Prisma.NoteCreateNestedManyWithoutAssignmentInput
   aiOutputs?: Prisma.AiOutputCreateNestedManyWithoutAssignmentInput
+  focusSessions?: Prisma.FocusSessionCreateNestedManyWithoutAssignmentInput
 }
 
 export type AssignmentUncheckedCreateWithoutCourseInput = {
@@ -781,6 +807,7 @@ export type AssignmentUncheckedCreateWithoutCourseInput = {
   subtasks?: Prisma.SubtaskUncheckedCreateNestedManyWithoutAssignmentInput
   notes?: Prisma.NoteUncheckedCreateNestedManyWithoutAssignmentInput
   aiOutputs?: Prisma.AiOutputUncheckedCreateNestedManyWithoutAssignmentInput
+  focusSessions?: Prisma.FocusSessionUncheckedCreateNestedManyWithoutAssignmentInput
 }
 
 export type AssignmentCreateOrConnectWithoutCourseInput = {
@@ -823,6 +850,7 @@ export type AssignmentCreateWithoutSubtasksInput = {
   course?: Prisma.CourseCreateNestedOneWithoutAssignmentsInput
   notes?: Prisma.NoteCreateNestedManyWithoutAssignmentInput
   aiOutputs?: Prisma.AiOutputCreateNestedManyWithoutAssignmentInput
+  focusSessions?: Prisma.FocusSessionCreateNestedManyWithoutAssignmentInput
 }
 
 export type AssignmentUncheckedCreateWithoutSubtasksInput = {
@@ -839,6 +867,7 @@ export type AssignmentUncheckedCreateWithoutSubtasksInput = {
   estimatedHours?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   notes?: Prisma.NoteUncheckedCreateNestedManyWithoutAssignmentInput
   aiOutputs?: Prisma.AiOutputUncheckedCreateNestedManyWithoutAssignmentInput
+  focusSessions?: Prisma.FocusSessionUncheckedCreateNestedManyWithoutAssignmentInput
 }
 
 export type AssignmentCreateOrConnectWithoutSubtasksInput = {
@@ -871,6 +900,7 @@ export type AssignmentUpdateWithoutSubtasksInput = {
   course?: Prisma.CourseUpdateOneWithoutAssignmentsNestedInput
   notes?: Prisma.NoteUpdateManyWithoutAssignmentNestedInput
   aiOutputs?: Prisma.AiOutputUpdateManyWithoutAssignmentNestedInput
+  focusSessions?: Prisma.FocusSessionUpdateManyWithoutAssignmentNestedInput
 }
 
 export type AssignmentUncheckedUpdateWithoutSubtasksInput = {
@@ -887,6 +917,7 @@ export type AssignmentUncheckedUpdateWithoutSubtasksInput = {
   estimatedHours?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   notes?: Prisma.NoteUncheckedUpdateManyWithoutAssignmentNestedInput
   aiOutputs?: Prisma.AiOutputUncheckedUpdateManyWithoutAssignmentNestedInput
+  focusSessions?: Prisma.FocusSessionUncheckedUpdateManyWithoutAssignmentNestedInput
 }
 
 export type AssignmentCreateWithoutNotesInput = {
@@ -903,6 +934,7 @@ export type AssignmentCreateWithoutNotesInput = {
   course?: Prisma.CourseCreateNestedOneWithoutAssignmentsInput
   subtasks?: Prisma.SubtaskCreateNestedManyWithoutAssignmentInput
   aiOutputs?: Prisma.AiOutputCreateNestedManyWithoutAssignmentInput
+  focusSessions?: Prisma.FocusSessionCreateNestedManyWithoutAssignmentInput
 }
 
 export type AssignmentUncheckedCreateWithoutNotesInput = {
@@ -919,6 +951,7 @@ export type AssignmentUncheckedCreateWithoutNotesInput = {
   estimatedHours?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   subtasks?: Prisma.SubtaskUncheckedCreateNestedManyWithoutAssignmentInput
   aiOutputs?: Prisma.AiOutputUncheckedCreateNestedManyWithoutAssignmentInput
+  focusSessions?: Prisma.FocusSessionUncheckedCreateNestedManyWithoutAssignmentInput
 }
 
 export type AssignmentCreateOrConnectWithoutNotesInput = {
@@ -951,6 +984,7 @@ export type AssignmentUpdateWithoutNotesInput = {
   course?: Prisma.CourseUpdateOneWithoutAssignmentsNestedInput
   subtasks?: Prisma.SubtaskUpdateManyWithoutAssignmentNestedInput
   aiOutputs?: Prisma.AiOutputUpdateManyWithoutAssignmentNestedInput
+  focusSessions?: Prisma.FocusSessionUpdateManyWithoutAssignmentNestedInput
 }
 
 export type AssignmentUncheckedUpdateWithoutNotesInput = {
@@ -967,6 +1001,7 @@ export type AssignmentUncheckedUpdateWithoutNotesInput = {
   estimatedHours?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   subtasks?: Prisma.SubtaskUncheckedUpdateManyWithoutAssignmentNestedInput
   aiOutputs?: Prisma.AiOutputUncheckedUpdateManyWithoutAssignmentNestedInput
+  focusSessions?: Prisma.FocusSessionUncheckedUpdateManyWithoutAssignmentNestedInput
 }
 
 export type AssignmentCreateWithoutAiOutputsInput = {
@@ -983,6 +1018,7 @@ export type AssignmentCreateWithoutAiOutputsInput = {
   course?: Prisma.CourseCreateNestedOneWithoutAssignmentsInput
   subtasks?: Prisma.SubtaskCreateNestedManyWithoutAssignmentInput
   notes?: Prisma.NoteCreateNestedManyWithoutAssignmentInput
+  focusSessions?: Prisma.FocusSessionCreateNestedManyWithoutAssignmentInput
 }
 
 export type AssignmentUncheckedCreateWithoutAiOutputsInput = {
@@ -999,6 +1035,7 @@ export type AssignmentUncheckedCreateWithoutAiOutputsInput = {
   estimatedHours?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   subtasks?: Prisma.SubtaskUncheckedCreateNestedManyWithoutAssignmentInput
   notes?: Prisma.NoteUncheckedCreateNestedManyWithoutAssignmentInput
+  focusSessions?: Prisma.FocusSessionUncheckedCreateNestedManyWithoutAssignmentInput
 }
 
 export type AssignmentCreateOrConnectWithoutAiOutputsInput = {
@@ -1031,6 +1068,7 @@ export type AssignmentUpdateWithoutAiOutputsInput = {
   course?: Prisma.CourseUpdateOneWithoutAssignmentsNestedInput
   subtasks?: Prisma.SubtaskUpdateManyWithoutAssignmentNestedInput
   notes?: Prisma.NoteUpdateManyWithoutAssignmentNestedInput
+  focusSessions?: Prisma.FocusSessionUpdateManyWithoutAssignmentNestedInput
 }
 
 export type AssignmentUncheckedUpdateWithoutAiOutputsInput = {
@@ -1047,6 +1085,91 @@ export type AssignmentUncheckedUpdateWithoutAiOutputsInput = {
   estimatedHours?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   subtasks?: Prisma.SubtaskUncheckedUpdateManyWithoutAssignmentNestedInput
   notes?: Prisma.NoteUncheckedUpdateManyWithoutAssignmentNestedInput
+  focusSessions?: Prisma.FocusSessionUncheckedUpdateManyWithoutAssignmentNestedInput
+}
+
+export type AssignmentCreateWithoutFocusSessionsInput = {
+  id?: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  title: string
+  description?: string | null
+  dueDate?: Date | string | null
+  status?: $Enums.Status
+  priority?: $Enums.Priority
+  estimatedHours?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  user: Prisma.UserCreateNestedOneWithoutAssignmentsInput
+  course?: Prisma.CourseCreateNestedOneWithoutAssignmentsInput
+  subtasks?: Prisma.SubtaskCreateNestedManyWithoutAssignmentInput
+  notes?: Prisma.NoteCreateNestedManyWithoutAssignmentInput
+  aiOutputs?: Prisma.AiOutputCreateNestedManyWithoutAssignmentInput
+}
+
+export type AssignmentUncheckedCreateWithoutFocusSessionsInput = {
+  id?: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  userId: string
+  courseId?: string | null
+  title: string
+  description?: string | null
+  dueDate?: Date | string | null
+  status?: $Enums.Status
+  priority?: $Enums.Priority
+  estimatedHours?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  subtasks?: Prisma.SubtaskUncheckedCreateNestedManyWithoutAssignmentInput
+  notes?: Prisma.NoteUncheckedCreateNestedManyWithoutAssignmentInput
+  aiOutputs?: Prisma.AiOutputUncheckedCreateNestedManyWithoutAssignmentInput
+}
+
+export type AssignmentCreateOrConnectWithoutFocusSessionsInput = {
+  where: Prisma.AssignmentWhereUniqueInput
+  create: Prisma.XOR<Prisma.AssignmentCreateWithoutFocusSessionsInput, Prisma.AssignmentUncheckedCreateWithoutFocusSessionsInput>
+}
+
+export type AssignmentUpsertWithoutFocusSessionsInput = {
+  update: Prisma.XOR<Prisma.AssignmentUpdateWithoutFocusSessionsInput, Prisma.AssignmentUncheckedUpdateWithoutFocusSessionsInput>
+  create: Prisma.XOR<Prisma.AssignmentCreateWithoutFocusSessionsInput, Prisma.AssignmentUncheckedCreateWithoutFocusSessionsInput>
+  where?: Prisma.AssignmentWhereInput
+}
+
+export type AssignmentUpdateToOneWithWhereWithoutFocusSessionsInput = {
+  where?: Prisma.AssignmentWhereInput
+  data: Prisma.XOR<Prisma.AssignmentUpdateWithoutFocusSessionsInput, Prisma.AssignmentUncheckedUpdateWithoutFocusSessionsInput>
+}
+
+export type AssignmentUpdateWithoutFocusSessionsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dueDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
+  priority?: Prisma.EnumPriorityFieldUpdateOperationsInput | $Enums.Priority
+  estimatedHours?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  user?: Prisma.UserUpdateOneRequiredWithoutAssignmentsNestedInput
+  course?: Prisma.CourseUpdateOneWithoutAssignmentsNestedInput
+  subtasks?: Prisma.SubtaskUpdateManyWithoutAssignmentNestedInput
+  notes?: Prisma.NoteUpdateManyWithoutAssignmentNestedInput
+  aiOutputs?: Prisma.AiOutputUpdateManyWithoutAssignmentNestedInput
+}
+
+export type AssignmentUncheckedUpdateWithoutFocusSessionsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  courseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dueDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
+  priority?: Prisma.EnumPriorityFieldUpdateOperationsInput | $Enums.Priority
+  estimatedHours?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  subtasks?: Prisma.SubtaskUncheckedUpdateManyWithoutAssignmentNestedInput
+  notes?: Prisma.NoteUncheckedUpdateManyWithoutAssignmentNestedInput
+  aiOutputs?: Prisma.AiOutputUncheckedUpdateManyWithoutAssignmentNestedInput
 }
 
 export type AssignmentCreateManyUserInput = {
@@ -1076,6 +1199,7 @@ export type AssignmentUpdateWithoutUserInput = {
   subtasks?: Prisma.SubtaskUpdateManyWithoutAssignmentNestedInput
   notes?: Prisma.NoteUpdateManyWithoutAssignmentNestedInput
   aiOutputs?: Prisma.AiOutputUpdateManyWithoutAssignmentNestedInput
+  focusSessions?: Prisma.FocusSessionUpdateManyWithoutAssignmentNestedInput
 }
 
 export type AssignmentUncheckedUpdateWithoutUserInput = {
@@ -1092,6 +1216,7 @@ export type AssignmentUncheckedUpdateWithoutUserInput = {
   subtasks?: Prisma.SubtaskUncheckedUpdateManyWithoutAssignmentNestedInput
   notes?: Prisma.NoteUncheckedUpdateManyWithoutAssignmentNestedInput
   aiOutputs?: Prisma.AiOutputUncheckedUpdateManyWithoutAssignmentNestedInput
+  focusSessions?: Prisma.FocusSessionUncheckedUpdateManyWithoutAssignmentNestedInput
 }
 
 export type AssignmentUncheckedUpdateManyWithoutUserInput = {
@@ -1134,6 +1259,7 @@ export type AssignmentUpdateWithoutCourseInput = {
   subtasks?: Prisma.SubtaskUpdateManyWithoutAssignmentNestedInput
   notes?: Prisma.NoteUpdateManyWithoutAssignmentNestedInput
   aiOutputs?: Prisma.AiOutputUpdateManyWithoutAssignmentNestedInput
+  focusSessions?: Prisma.FocusSessionUpdateManyWithoutAssignmentNestedInput
 }
 
 export type AssignmentUncheckedUpdateWithoutCourseInput = {
@@ -1150,6 +1276,7 @@ export type AssignmentUncheckedUpdateWithoutCourseInput = {
   subtasks?: Prisma.SubtaskUncheckedUpdateManyWithoutAssignmentNestedInput
   notes?: Prisma.NoteUncheckedUpdateManyWithoutAssignmentNestedInput
   aiOutputs?: Prisma.AiOutputUncheckedUpdateManyWithoutAssignmentNestedInput
+  focusSessions?: Prisma.FocusSessionUncheckedUpdateManyWithoutAssignmentNestedInput
 }
 
 export type AssignmentUncheckedUpdateManyWithoutCourseInput = {
@@ -1174,12 +1301,14 @@ export type AssignmentCountOutputType = {
   subtasks: number
   notes: number
   aiOutputs: number
+  focusSessions: number
 }
 
 export type AssignmentCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   subtasks?: boolean | AssignmentCountOutputTypeCountSubtasksArgs
   notes?: boolean | AssignmentCountOutputTypeCountNotesArgs
   aiOutputs?: boolean | AssignmentCountOutputTypeCountAiOutputsArgs
+  focusSessions?: boolean | AssignmentCountOutputTypeCountFocusSessionsArgs
 }
 
 /**
@@ -1213,6 +1342,13 @@ export type AssignmentCountOutputTypeCountAiOutputsArgs<ExtArgs extends runtime.
   where?: Prisma.AiOutputWhereInput
 }
 
+/**
+ * AssignmentCountOutputType without action
+ */
+export type AssignmentCountOutputTypeCountFocusSessionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.FocusSessionWhereInput
+}
+
 
 export type AssignmentSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -1231,6 +1367,7 @@ export type AssignmentSelect<ExtArgs extends runtime.Types.Extensions.InternalAr
   subtasks?: boolean | Prisma.Assignment$subtasksArgs<ExtArgs>
   notes?: boolean | Prisma.Assignment$notesArgs<ExtArgs>
   aiOutputs?: boolean | Prisma.Assignment$aiOutputsArgs<ExtArgs>
+  focusSessions?: boolean | Prisma.Assignment$focusSessionsArgs<ExtArgs>
   _count?: boolean | Prisma.AssignmentCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["assignment"]>
 
@@ -1287,6 +1424,7 @@ export type AssignmentInclude<ExtArgs extends runtime.Types.Extensions.InternalA
   subtasks?: boolean | Prisma.Assignment$subtasksArgs<ExtArgs>
   notes?: boolean | Prisma.Assignment$notesArgs<ExtArgs>
   aiOutputs?: boolean | Prisma.Assignment$aiOutputsArgs<ExtArgs>
+  focusSessions?: boolean | Prisma.Assignment$focusSessionsArgs<ExtArgs>
   _count?: boolean | Prisma.AssignmentCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type AssignmentIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1306,6 +1444,7 @@ export type $AssignmentPayload<ExtArgs extends runtime.Types.Extensions.Internal
     subtasks: Prisma.$SubtaskPayload<ExtArgs>[]
     notes: Prisma.$NotePayload<ExtArgs>[]
     aiOutputs: Prisma.$AiOutputPayload<ExtArgs>[]
+    focusSessions: Prisma.$FocusSessionPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1718,6 +1857,7 @@ export interface Prisma__AssignmentClient<T, Null = never, ExtArgs extends runti
   subtasks<T extends Prisma.Assignment$subtasksArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Assignment$subtasksArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SubtaskPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   notes<T extends Prisma.Assignment$notesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Assignment$notesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$NotePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   aiOutputs<T extends Prisma.Assignment$aiOutputsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Assignment$aiOutputsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AiOutputPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  focusSessions<T extends Prisma.Assignment$focusSessionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Assignment$focusSessionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$FocusSessionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2242,6 +2382,30 @@ export type Assignment$aiOutputsArgs<ExtArgs extends runtime.Types.Extensions.In
   take?: number
   skip?: number
   distinct?: Prisma.AiOutputScalarFieldEnum | Prisma.AiOutputScalarFieldEnum[]
+}
+
+/**
+ * Assignment.focusSessions
+ */
+export type Assignment$focusSessionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the FocusSession
+   */
+  select?: Prisma.FocusSessionSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the FocusSession
+   */
+  omit?: Prisma.FocusSessionOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.FocusSessionInclude<ExtArgs> | null
+  where?: Prisma.FocusSessionWhereInput
+  orderBy?: Prisma.FocusSessionOrderByWithRelationInput | Prisma.FocusSessionOrderByWithRelationInput[]
+  cursor?: Prisma.FocusSessionWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.FocusSessionScalarFieldEnum | Prisma.FocusSessionScalarFieldEnum[]
 }
 
 /**

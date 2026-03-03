@@ -1,4 +1,4 @@
-import type { Assignment, Course, StudyCard, StudyCardReview, StudySession, Subtask } from "@/app/generated/prisma/client";
+import type { Assignment, Course, FocusSession, StudyCard, StudyCardReview, StudySession, Subtask } from "@/app/generated/prisma/client";
 
 // Prisma's Decimal type isn't serializable across the server/client boundary.
 // Use these types for any data passed from Server Components to Client Components.
@@ -72,6 +72,20 @@ export function serializeStudySession(
       ...r,
       createdAt: r.createdAt.toISOString(),
     })),
+  };
+}
+
+// FocusSession: createdAt/completedAt are DateTime
+export type SerializedFocusSession = Omit<FocusSession, "createdAt" | "completedAt"> & {
+  createdAt: string;
+  completedAt: string | null;
+};
+
+export function serializeFocusSession(session: FocusSession): SerializedFocusSession {
+  return {
+    ...session,
+    createdAt: session.createdAt.toISOString(),
+    completedAt: session.completedAt?.toISOString() ?? null,
   };
 }
 

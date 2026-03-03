@@ -392,7 +392,8 @@ export const ModelName = {
   AiOutput: 'AiOutput',
   StudyCard: 'StudyCard',
   StudyCardReview: 'StudyCardReview',
-  StudySession: 'StudySession'
+  StudySession: 'StudySession',
+  FocusSession: 'FocusSession'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -408,7 +409,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "course" | "assignment" | "subtask" | "note" | "aiOutput" | "studyCard" | "studyCardReview" | "studySession"
+    modelProps: "user" | "course" | "assignment" | "subtask" | "note" | "aiOutput" | "studyCard" | "studyCardReview" | "studySession" | "focusSession"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -1078,6 +1079,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    FocusSession: {
+      payload: Prisma.$FocusSessionPayload<ExtArgs>
+      fields: Prisma.FocusSessionFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.FocusSessionFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FocusSessionPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.FocusSessionFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FocusSessionPayload>
+        }
+        findFirst: {
+          args: Prisma.FocusSessionFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FocusSessionPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.FocusSessionFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FocusSessionPayload>
+        }
+        findMany: {
+          args: Prisma.FocusSessionFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FocusSessionPayload>[]
+        }
+        create: {
+          args: Prisma.FocusSessionCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FocusSessionPayload>
+        }
+        createMany: {
+          args: Prisma.FocusSessionCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.FocusSessionCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FocusSessionPayload>[]
+        }
+        delete: {
+          args: Prisma.FocusSessionDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FocusSessionPayload>
+        }
+        update: {
+          args: Prisma.FocusSessionUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FocusSessionPayload>
+        }
+        deleteMany: {
+          args: Prisma.FocusSessionDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.FocusSessionUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.FocusSessionUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FocusSessionPayload>[]
+        }
+        upsert: {
+          args: Prisma.FocusSessionUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FocusSessionPayload>
+        }
+        aggregate: {
+          args: Prisma.FocusSessionAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateFocusSession>
+        }
+        groupBy: {
+          args: Prisma.FocusSessionGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.FocusSessionGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.FocusSessionCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.FocusSessionCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -1245,6 +1320,21 @@ export const StudySessionScalarFieldEnum = {
 } as const
 
 export type StudySessionScalarFieldEnum = (typeof StudySessionScalarFieldEnum)[keyof typeof StudySessionScalarFieldEnum]
+
+
+export const FocusSessionScalarFieldEnum = {
+  id: 'id',
+  createdAt: 'createdAt',
+  userId: 'userId',
+  courseId: 'courseId',
+  assignmentId: 'assignmentId',
+  durationMins: 'durationMins',
+  actualSecs: 'actualSecs',
+  completedAt: 'completedAt',
+  label: 'label'
+} as const
+
+export type FocusSessionScalarFieldEnum = (typeof FocusSessionScalarFieldEnum)[keyof typeof FocusSessionScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -1571,6 +1661,7 @@ export type GlobalOmitConfig = {
   studyCard?: Prisma.StudyCardOmit
   studyCardReview?: Prisma.StudyCardReviewOmit
   studySession?: Prisma.StudySessionOmit
+  focusSession?: Prisma.FocusSessionOmit
 }
 
 /* Types for Logging */

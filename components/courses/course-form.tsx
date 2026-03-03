@@ -1,6 +1,7 @@
 "use client";
 
-import { useActionState, useState } from "react";
+import { useActionState, useEffect, useRef, useState } from "react";
+import { toast } from "sonner";
 import { CheckIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -37,14 +38,35 @@ export function CourseForm({ course, onClose }: CourseFormProps) {
     course?.color ?? DEFAULT_COLOR
   );
 
+  const submitCountRef = useRef(0);
+
   const action = course
-    ? (_prev: FormState, formData: FormData) => updateCourse(course.id, formData)
-    : (_prev: FormState, formData: FormData) => createCourse(formData);
+    ? (_prev: FormState, formData: FormData) => {
+        submitCountRef.current += 1;
+        return updateCourse(course.id, formData);
+      }
+    : (_prev: FormState, formData: FormData) => {
+        submitCountRef.current += 1;
+        return createCourse(formData);
+      };
 
   const [state, formAction, isPending] = useActionState<FormState, FormData>(
     action,
     undefined
   );
+
+  useEffect(() => {
+    if (submitCountRef.current === 0) return;
+    if (isPending) return;
+    if (state?.error) {
+      toast.error(state.error);
+    } else if (course) {
+      // createCourse redirects on success so toast only fires for updates
+      toast.success("Course updated");
+      onClose();
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [state, isPending]);
 
   return (
     <form action={formAction} className="flex flex-col gap-5">

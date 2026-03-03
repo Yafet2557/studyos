@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect, useCallback } from "react";
+import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -79,6 +80,7 @@ export function FocusTimer({ courses, assignments, onSessionComplete }: FocusTim
       if (!res.ok) {
         const err = await res.json();
         console.error("Failed to start session:", err.error);
+        toast.error("Failed to start session");
         return;
       }
 
@@ -157,12 +159,14 @@ export function FocusTimer({ courses, assignments, onSessionComplete }: FocusTim
 
       if (!res.ok) {
         console.error("Failed to end session");
+        toast.error("Failed to save session");
         return;
       }
 
       const data = await res.json();
       setPhase("done");
       setStopDialogOpen(false);
+      toast.success("Focus session complete!");
       onSessionComplete(data.session);
     } finally {
       setSubmitting(false);

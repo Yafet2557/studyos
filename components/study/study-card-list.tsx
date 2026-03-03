@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 import { Plus, Pencil, Trash2, Sparkles, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -53,13 +54,17 @@ export function StudyCardList({ cards, courses, notes }: StudyCardListProps) {
 
       if (!res.ok) {
         const data = await res.json();
-        setGenerateError(data.error ?? "Failed to generate cards");
+        const msg = data.error ?? "Failed to generate cards";
+        setGenerateError(msg);
+        toast.error(msg);
         return;
       }
 
+      toast.success("Flashcards generated");
       router.refresh();
     } catch {
       setGenerateError("Network error");
+      toast.error("Failed to generate flashcards");
     } finally {
       setGenerating(false);
     }
@@ -67,6 +72,7 @@ export function StudyCardList({ cards, courses, notes }: StudyCardListProps) {
 
   async function handleDelete(cardId: string) {
     await deleteStudyCard(cardId);
+    toast.success("Card deleted");
     router.refresh();
   }
 

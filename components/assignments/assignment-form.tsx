@@ -1,6 +1,7 @@
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, useEffect, useRef } from "react";
+import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -31,8 +32,11 @@ export function AssignmentForm({
   defaultCourseId,
   onClose,
 }: AssignmentFormProps) {
+  const submitCountRef = useRef(0);
+
   const [state, formAction, isPending] = useActionState<ActionState, FormData>(
     async (_, formData) => {
+      submitCountRef.current += 1;
       if (assignment) {
         return updateAssignment(assignment.id, formData);
       }
@@ -40,6 +44,19 @@ export function AssignmentForm({
     },
     undefined
   );
+
+  useEffect(() => {
+    if (submitCountRef.current === 0) return;
+    if (isPending) return;
+    if (state?.error) {
+      toast.error(state.error);
+    } else if (assignment) {
+      // createAssignment redirects on success so toast only fires for updates
+      toast.success("Assignment updated");
+      onClose();
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [state, isPending]);
 
   const defaultDueDate = assignment?.dueDate
     ? assignment.dueDate.split("T")[0]

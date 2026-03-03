@@ -2,6 +2,7 @@
 
 import { useState, useRef } from "react";
 import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Sparkles, Paperclip, X } from "lucide-react";
 
@@ -59,13 +60,17 @@ export function BreakdownButton({ assignmentId }: { assignmentId: string }) {
 
       if (!res.ok) {
         const data = await res.json();
-        setError(data.error ?? "Something went wrong");
+        const msg = data.error ?? "Failed to generate subtasks";
+        setError(msg);
+        toast.error(msg);
         return;
       }
 
+      toast.success("Subtasks generated");
       router.refresh();
     } catch {
       setError("Network error. Please try again.");
+      toast.error("Failed to generate subtasks");
     } finally {
       setLoading(false);
     }

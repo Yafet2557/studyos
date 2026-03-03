@@ -1,6 +1,7 @@
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, useEffect, useRef } from "react";
+import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
@@ -24,8 +25,11 @@ type StudyCardFormProps = {
 };
 
 export function StudyCardForm({ card, courses, onClose }: StudyCardFormProps) {
+  const submitCountRef = useRef(0);
+
   const [state, formAction, isPending] = useActionState<ActionState, FormData>(
     async (_, formData) => {
+      submitCountRef.current += 1;
       if (card) {
         return updateStudyCard(card.id, formData);
       }
@@ -33,6 +37,18 @@ export function StudyCardForm({ card, courses, onClose }: StudyCardFormProps) {
     },
     undefined
   );
+
+  useEffect(() => {
+    if (submitCountRef.current === 0) return;
+    if (isPending) return;
+    if (state?.error) {
+      toast.error(state.error);
+    } else {
+      toast.success(card ? "Card updated" : "Card created");
+      onClose();
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [state, isPending]);
 
   return (
     <form action={formAction} className="space-y-4">

@@ -1,6 +1,7 @@
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, useEffect, useRef } from "react";
+import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -22,10 +23,25 @@ type NoteFormProps = {
 };
 
 export function NoteForm({ courses, onClose }: NoteFormProps) {
+  const submitCountRef = useRef(0);
+
   const [state, formAction, isPending] = useActionState<ActionState, FormData>(
-    async (_, formData) => createNote(formData),
+    async (_, formData) => {
+      submitCountRef.current += 1;
+      return createNote(formData);
+    },
     undefined
   );
+
+  useEffect(() => {
+    if (submitCountRef.current === 0) return;
+    if (isPending) return;
+    if (state?.error) {
+      toast.error(state.error);
+    }
+    // createNote redirects on success — no toast needed here
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [state, isPending]);
 
   return (
     <form action={formAction} className="space-y-4">

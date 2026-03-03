@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Sparkles, RefreshCw } from "lucide-react";
 
@@ -20,12 +21,16 @@ export function DailyBriefing({ cachedPlan }: { cachedPlan: string | null }) {
       });
       const data = await res.json();
       if (!res.ok) {
-        setError(data.error ?? "Something went wrong");
+        const msg = data.error ?? "Something went wrong";
+        setError(msg);
+        toast.error(msg);
         return;
       }
       setPlan(data.plan);
+      toast.success("Plan generated");
     } catch {
       setError("Network error. Please try again.");
+      toast.error("Failed to generate plan");
     } finally {
       setLoading(false);
     }

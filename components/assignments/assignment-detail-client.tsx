@@ -15,6 +15,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { toast } from "sonner";
 import { AssignmentForm } from "./assignment-form";
 import { deleteAssignment } from "@/lib/actions/assignment";
 import { MoreHorizontal, Pencil, Trash2 } from "lucide-react";
@@ -48,6 +49,7 @@ export function AssignmentDetailClient({
             className="text-red-600 focus:text-red-600"
             onClick={async () => {
               if (window.confirm("Delete this assignment? This cannot be undone.")) {
+                toast.success("Assignment deleted");
                 await deleteAssignment(assignment.id);
               }
             }}

@@ -17,6 +17,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { toast } from "sonner";
 import { deleteNote, updateNote } from "@/lib/actions/note";
 import { MoreHorizontal, Pencil, Trash2 } from "lucide-react";
 
@@ -63,6 +64,7 @@ export function NoteDetailClient({ note }: { note: SerializedNote }) {
             className="text-red-600 focus:text-red-600"
             onClick={async () => {
               if (window.confirm("Delete this note? This cannot be undone.")) {
+                toast.success("Note deleted");
                 await deleteNote(note.id);
               }
             }}

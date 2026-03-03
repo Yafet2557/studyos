@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Sparkles } from "lucide-react";
 
@@ -44,12 +45,16 @@ export function NoteAiPanel({ noteId }: { noteId: string }) {
       });
       const data = await res.json();
       if (!res.ok) {
-        setState((s) => ({ ...s, errorSummary: data.error ?? "Something went wrong" }));
+        const msg = data.error ?? "Something went wrong";
+        setState((s) => ({ ...s, errorSummary: msg }));
+        toast.error(msg);
         return;
       }
       setState((s) => ({ ...s, summary: data.summary }));
+      toast.success("Summary generated");
     } catch {
       setState((s) => ({ ...s, errorSummary: "Network error. Please try again." }));
+      toast.error("Failed to generate summary");
     } finally {
       setState((s) => ({ ...s, loadingSummary: false }));
     }
@@ -65,12 +70,16 @@ export function NoteAiPanel({ noteId }: { noteId: string }) {
       });
       const data = await res.json();
       if (!res.ok) {
-        setState((s) => ({ ...s, errorQuestions: data.error ?? "Something went wrong" }));
+        const msg = data.error ?? "Something went wrong";
+        setState((s) => ({ ...s, errorQuestions: msg }));
+        toast.error(msg);
         return;
       }
       setState((s) => ({ ...s, questions: data.questions }));
+      toast.success("Questions generated");
     } catch {
       setState((s) => ({ ...s, errorQuestions: "Network error. Please try again." }));
+      toast.error("Failed to generate questions");
     } finally {
       setState((s) => ({ ...s, loadingQuestions: false }));
     }

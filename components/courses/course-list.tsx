@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { PlusIcon, ChevronDownIcon } from "lucide-react";
+import { PlusIcon, ChevronDownIcon, BookOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/dialog";
 import { CourseCard } from "./course-card";
 import { CourseForm } from "./course-form";
+import { EmptyState } from "@/components/empty-state";
 
 type CourseWithCount = {
   id: string;
@@ -73,16 +74,13 @@ export function CourseList({ courses }: CourseListProps) {
       </div>
 
       {isEmpty ? (
-        <div className="flex flex-col items-center justify-center gap-3 py-20 text-center">
-          <p className="text-lg font-medium">No courses yet</p>
-          <p className="text-sm text-muted-foreground max-w-xs">
-            Add your courses to start tracking assignments and notes in one place.
-          </p>
-          <Button variant="outline" size="sm" onClick={openCreate} className="mt-1">
-            <PlusIcon />
-            Add your first course
-          </Button>
-        </div>
+        <EmptyState
+          icon={BookOpen}
+          title="No courses yet"
+          description="Add your first course to start organizing your work."
+          actionLabel="Add Course"
+          actionHref="/courses"
+        />
       ) : (
         <>
           {activeCourses.length > 0 && (

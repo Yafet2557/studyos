@@ -3,6 +3,8 @@ import { getUser } from "@/lib/auth-utils";
 import { sortByUrgency } from "@/lib/utils/urgency";
 import { AssignmentCard } from "@/components/assignments/assignment-card";
 import { AssignmentListClient } from "@/components/assignments/assignment-list-client";
+import { EmptyState } from "@/components/empty-state";
+import { ClipboardList } from "lucide-react";
 
 export default async function AssignmentsPage() {
   const userId = await getUser();
@@ -26,10 +28,11 @@ export default async function AssignmentsPage() {
       <AssignmentListClient courses={courses} />
 
       {assignments.length === 0 && (
-        <div className="text-center py-16 text-muted-foreground">
-          <p className="text-lg font-medium">No assignments yet</p>
-          <p className="text-sm mt-1">Create your first assignment to get started.</p>
-        </div>
+        <EmptyState
+          icon={ClipboardList}
+          title="No assignments yet"
+          description="Create an assignment to start tracking your work."
+        />
       )}
 
       {overdue.length > 0 && (

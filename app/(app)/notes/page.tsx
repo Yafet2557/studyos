@@ -3,6 +3,8 @@ import { getUser } from "@/lib/auth-utils";
 import { NoteListClient } from "@/components/notes/note-list-client";
 import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
+import { EmptyState } from "@/components/empty-state";
+import { FileText } from "lucide-react";
 
 export default async function NotesPage() {
   const userId = await getUser();
@@ -24,10 +26,11 @@ export default async function NotesPage() {
       <NoteListClient courses={courses} />
 
       {notes.length === 0 && (
-        <div className="text-center py-16 text-muted-foreground">
-          <p className="text-lg font-medium">No notes yet</p>
-          <p className="text-sm mt-1">Create your first note to get started.</p>
-        </div>
+        <EmptyState
+          icon={FileText}
+          title="No notes yet"
+          description="Create your first note to start capturing knowledge."
+        />
       )}
 
       {notes.length > 0 && (

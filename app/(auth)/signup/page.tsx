@@ -20,7 +20,7 @@ export default function SignupPage() {
   return (
     <main className="flex min-h-screen items-center justify-center">
       <form action={signup} className="flex flex-col gap-4 w-full max-w-sm">
-        <h1 className="text-2xl font-semibold">Create account</h1>
+        <h1 className="text-3xl font-serif font-normal tracking-tight">Create account</h1>
 
         <input
           name="email"

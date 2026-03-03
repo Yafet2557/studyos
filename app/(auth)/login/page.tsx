@@ -13,7 +13,7 @@ export default function LoginPage() {
   return (
     <main className="flex min-h-screen items-center justify-center">
       <form action={login} className="flex flex-col gap-4 w-full max-w-sm">
-        <h1 className="text-2xl font-semibold">Sign in</h1>
+        <h1 className="text-3xl font-serif font-normal tracking-tight">Sign in</h1>
 
         <input
           name="email"

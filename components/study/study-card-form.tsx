@@ -51,7 +51,7 @@ export function StudyCardForm({ card, courses, onClose }: StudyCardFormProps) {
   }, [state, isPending]);
 
   return (
-    <form action={formAction} className="space-y-4">
+    <form action={formAction} className="space-y-5">
       <div className="space-y-1.5">
         <Label htmlFor="front">Front *</Label>
         <Textarea

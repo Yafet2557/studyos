@@ -54,7 +54,7 @@ export function AssignmentCard({ assignment }: { assignment: AssignmentWithCours
   return (
     <div className="relative group">
       <Link href={`/assignments/${assignment.id}`}>
-        <Card className={`hover:border-border/80 hover:bg-card/80 transition-colors cursor-pointer ${deleting ? "opacity-50 pointer-events-none" : ""}`}>
+        <Card className={`hover:translate-y-[-1px] hover:shadow-[var(--shadow-md)] transition-all duration-300 cursor-pointer ${deleting ? "opacity-50 pointer-events-none" : ""}`}>
           <CardContent className="p-4">
             <div className="flex items-start justify-between gap-2 pr-6">
               <div className="flex-1 min-w-0">
@@ -90,7 +90,7 @@ export function AssignmentCard({ assignment }: { assignment: AssignmentWithCours
       <Button
         variant="ghost"
         size="icon"
-        className="absolute top-2 right-2 h-7 w-7 opacity-0 group-hover:opacity-100 transition-opacity z-10"
+        className="absolute top-2 right-2 h-7 w-7 opacity-0 group-hover:opacity-100 transition-opacity z-10 rounded-full hover:bg-red-500/10 hover:text-red-500 transition-colors"
         onClick={handleDelete}
         disabled={deleting}
       >

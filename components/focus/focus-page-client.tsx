@@ -69,7 +69,7 @@ export function FocusPageClient({
       <div className="flex gap-4 animate-fade-up fade-up-1">
         <Card className="flex-1">
           <CardContent className="p-4 flex items-center gap-3">
-            <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary/15 to-primary/5 flex items-center justify-center">
               <Clock className="h-5 w-5 text-primary" />
             </div>
             <div>
@@ -80,7 +80,7 @@ export function FocusPageClient({
         </Card>
         <Card className="flex-1">
           <CardContent className="p-4 flex items-center gap-3">
-            <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary/15 to-primary/5 flex items-center justify-center">
               <CheckCircle2 className="h-5 w-5 text-primary" />
             </div>
             <div>
@@ -112,7 +112,7 @@ export function FocusPageClient({
             {recentSessions.map((s) => (
               <div
                 key={s.id}
-                className="flex items-center justify-between px-4 py-3 rounded-lg border border-border/60 bg-card"
+                className="flex items-center justify-between px-4 py-3 rounded-xl border border-border/60 bg-card hover:bg-primary/5 transition-colors"
               >
                 <div className="flex items-center gap-3">
                   <Clock className="h-4 w-4 text-muted-foreground flex-shrink-0" />

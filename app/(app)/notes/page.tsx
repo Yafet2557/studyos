@@ -39,7 +39,7 @@ export default async function NotesPage() {
             <Link
               key={note.id}
               href={`/notes/${note.id}`}
-              className="flex items-center justify-between rounded-lg border px-4 py-3 hover:bg-muted/50 transition-colors"
+              className="flex items-center justify-between rounded-xl shadow-[var(--shadow-sm)] hover:shadow-[var(--shadow-md)] hover:translate-y-[-1px] px-5 py-4 transition-all duration-300 bg-card border border-border/50"
             >
               <div className="flex-1 min-w-0">
                 <p className="font-medium truncate">{note.title}</p>

@@ -69,7 +69,7 @@ export default async function AssignmentDetailPage({
       </div>
 
       {/* Metadata */}
-      <div className="flex flex-wrap items-center gap-4">
+      <div className="flex flex-wrap items-center gap-4 rounded-2xl border border-border/50 bg-card shadow-[var(--shadow-sm)] px-5 py-4">
         <div className="flex items-center gap-2">
           <span className="text-sm text-muted-foreground">Status</span>
           <StatusSelector
@@ -100,7 +100,7 @@ export default async function AssignmentDetailPage({
 
       {/* Description */}
       {assignment.description && (
-        <div>
+        <div className="rounded-2xl border border-border/50 bg-card shadow-[var(--shadow-sm)] px-5 py-4">
           <h2 className="text-sm font-medium text-muted-foreground uppercase tracking-wide mb-2">
             Description
           </h2>
@@ -111,7 +111,7 @@ export default async function AssignmentDetailPage({
       )}
 
       {/* Subtasks */}
-      <div className="space-y-3">
+      <div className="rounded-2xl border border-border/50 bg-card shadow-[var(--shadow-sm)] px-5 py-4 space-y-3">
         <BreakdownButton assignmentId={assignment.id} />
         <SubtaskList
           subtasks={serialized.subtasks}

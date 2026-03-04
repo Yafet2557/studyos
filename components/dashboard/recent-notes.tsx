@@ -15,7 +15,7 @@ function relativeTime(date: Date): string {
 
 export function RecentNotes({ notes }: { notes: Note[] }) {
   return (
-    <div className="rounded-lg border border-border bg-card overflow-hidden">
+    <div className="rounded-2xl bg-card overflow-hidden shadow-[var(--shadow-sm)]">
       <div className="px-5 py-4 border-b border-border/60">
         <span className="text-sm font-semibold tracking-tight">Recent Notes</span>
       </div>
@@ -28,7 +28,7 @@ export function RecentNotes({ notes }: { notes: Note[] }) {
             <Link
               key={note.id}
               href={`/notes/${note.id}`}
-              className="flex items-center justify-between px-5 py-3 hover:bg-accent/50 transition-colors border-b border-border/40 last:border-b-0"
+              className="flex items-center justify-between px-5 py-3 hover:bg-primary/5 transition-colors border-b border-border/40 last:border-b-0"
             >
               <p className="text-sm font-medium truncate flex-1">{note.title}</p>
               <span className="text-xs font-mono text-muted-foreground ml-4 whitespace-nowrap">

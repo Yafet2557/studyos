@@ -23,7 +23,7 @@ export function SettingsClient({ email }: SettingsClientProps) {
   return (
     <div className="space-y-6">
       {/* Account Info */}
-      <section className="rounded-lg border border-border bg-card p-6 space-y-4">
+      <section className="rounded-2xl border border-border/50 bg-card shadow-[var(--shadow-sm)] p-7 space-y-4">
         <h2 className="text-xl font-serif font-normal tracking-tight">
           Account
         </h2>
@@ -34,7 +34,7 @@ export function SettingsClient({ email }: SettingsClientProps) {
       </section>
 
       {/* Theme Toggle */}
-      <section className="rounded-lg border border-border bg-card p-6 space-y-4">
+      <section className="rounded-2xl border border-border/50 bg-card shadow-[var(--shadow-sm)] p-7 space-y-4">
         <h2 className="text-xl font-serif font-normal tracking-tight">
           Appearance
         </h2>
@@ -71,7 +71,7 @@ export function SettingsClient({ email }: SettingsClientProps) {
       </section>
 
       {/* Change Password */}
-      <section className="rounded-lg border border-border bg-card p-6 space-y-4">
+      <section className="rounded-2xl border border-border/50 bg-card shadow-[var(--shadow-sm)] p-7 space-y-4">
         <h2 className="text-xl font-serif font-normal tracking-tight">
           Change Password
         </h2>

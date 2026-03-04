@@ -11,7 +11,7 @@ type CourseProgressItem = {
 export function CourseProgress({ courses }: { courses: CourseProgressItem[] }) {
   if (courses.length === 0) {
     return (
-      <div className="rounded-lg border border-border bg-card overflow-hidden">
+      <div className="rounded-2xl bg-card overflow-hidden shadow-[var(--shadow-sm)]">
         <div className="px-5 py-4 border-b border-border/60">
           <span className="text-sm font-semibold tracking-tight">Course Progress</span>
         </div>
@@ -21,7 +21,7 @@ export function CourseProgress({ courses }: { courses: CourseProgressItem[] }) {
   }
 
   return (
-    <div className="rounded-lg border border-border bg-card overflow-hidden">
+    <div className="rounded-2xl bg-card overflow-hidden shadow-[var(--shadow-sm)]">
       <div className="px-5 py-4 border-b border-border/60">
         <span className="text-sm font-semibold tracking-tight">Course Progress</span>
       </div>
@@ -54,8 +54,11 @@ export function CourseProgress({ courses }: { courses: CourseProgressItem[] }) {
               {course.total > 0 && (
                 <div className="h-1.5 w-full rounded-full bg-muted overflow-hidden">
                   <div
-                    className="h-full rounded-full bg-primary transition-all duration-300"
-                    style={{ width: `${pct}%` }}
+                    className="h-full rounded-full transition-all duration-300"
+                    style={{
+                      width: `${pct}%`,
+                      background: `linear-gradient(90deg, ${course.color}, ${course.color}80)`,
+                    }}
                   />
                 </div>
               )}

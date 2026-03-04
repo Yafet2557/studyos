@@ -92,22 +92,22 @@ export function SessionClient({ session, cards }: SessionClientProps) {
 
     return (
       <div className="flex flex-col items-center justify-center py-16 space-y-6">
-        <div className="w-16 h-16 rounded-full bg-emerald-500/10 flex items-center justify-center">
+        <div className="w-16 h-16 rounded-full bg-emerald-500/10 flex items-center justify-center shadow-[0_0_30px_oklch(0.6_0.2_150/0.3)] animate-scale-in">
           <Check className="h-8 w-8 text-emerald-600" />
         </div>
         <h2 className="text-2xl font-serif font-normal tracking-tight">
           Session Complete
         </h2>
         <div className="grid grid-cols-3 gap-8 text-center">
-          <div>
+          <div className="rounded-2xl bg-muted/30 p-4">
             <p className="text-2xl font-mono font-medium">{cardsStudied}</p>
             <p className="text-sm text-muted-foreground">Cards</p>
           </div>
-          <div>
+          <div className="rounded-2xl bg-muted/30 p-4">
             <p className="text-2xl font-mono font-medium">{pct}%</p>
             <p className="text-sm text-muted-foreground">Correct</p>
           </div>
-          <div>
+          <div className="rounded-2xl bg-muted/30 p-4">
             <p className="text-2xl font-mono font-medium">
               {mins > 0 ? `${mins}m ` : ""}{secs}s
             </p>
@@ -139,7 +139,7 @@ export function SessionClient({ session, cards }: SessionClientProps) {
       </div>
 
       {/* Card */}
-      <Card className="min-h-[280px] flex flex-col">
+      <Card className="min-h-[320px] flex flex-col rounded-3xl shadow-[var(--shadow-lg)]">
         <CardContent className="flex-1 flex flex-col justify-center p-8">
           {phase === "front" ? (
             <div className="text-center space-y-4">
@@ -184,7 +184,7 @@ export function SessionClient({ session, cards }: SessionClientProps) {
                 key={r.quality}
                 disabled={submitting}
                 onClick={() => handleRate(r.quality)}
-                className={`flex flex-col items-center gap-1 py-3 px-2 rounded-lg border transition-colors disabled:opacity-50 ${r.className}`}
+                className={`flex flex-col items-center gap-1 py-3 px-2 rounded-2xl border transition-all duration-200 disabled:opacity-50 hover:scale-[1.03] active:scale-[0.97] ${r.className}`}
               >
                 <span className="text-sm font-medium">{r.label}</span>
                 <span className="text-xs opacity-70">{r.hint}</span>

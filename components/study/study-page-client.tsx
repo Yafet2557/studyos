@@ -96,7 +96,8 @@ export function StudyPageClient({
           size="lg"
           disabled={dueCount === 0 || starting}
           onClick={handleStartReview}
-          className="h-auto py-4 px-6"
+          className="h-auto py-4 px-6 text-white shadow-[var(--shadow-md)] hover:shadow-[var(--shadow-lg)] transition-shadow"
+          style={{ background: "var(--gradient-primary)" }}
         >
           {starting ? (
             <Loader2 className="h-4 w-4 mr-2 animate-spin" />
@@ -117,7 +118,7 @@ export function StudyPageClient({
             {sessions.map((s) => (
               <div
                 key={s.id}
-                className="flex items-center justify-between px-4 py-3 rounded-lg border border-border/60 bg-card"
+                className="flex items-center justify-between px-4 py-3 rounded-xl border border-border/60 bg-card hover:bg-primary/5 transition-colors"
               >
                 <div className="flex items-center gap-3">
                   <Clock className="h-4 w-4 text-muted-foreground" />

@@ -86,7 +86,7 @@ export function NoteAiPanel({ noteId }: { noteId: string }) {
   }
 
   return (
-    <div className="space-y-4 border-t pt-4">
+    <div className="glass rounded-2xl space-y-4 p-4 mt-4">
       <div className="flex items-center gap-2">
         <Sparkles className="h-4 w-4 text-muted-foreground" />
         <span className="text-sm font-medium">AI Tools</span>

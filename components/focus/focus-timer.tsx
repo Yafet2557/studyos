@@ -203,9 +203,9 @@ export function FocusTimer({ courses, assignments, onSessionComplete }: FocusTim
   if (phase === "done") {
     const actualMins = Math.floor((totalSecs - remainingSecs) / 60);
     return (
-      <div className="flex flex-col items-center gap-6 py-8">
+      <div className="flex flex-col items-center gap-6 py-8 animate-scale-in">
         <div
-          className={`w-48 h-48 rounded-full border-4 border-primary flex items-center justify-center transition-all ${pulse ? "scale-105 shadow-lg shadow-primary/20" : ""}`}
+          className={`w-48 h-48 rounded-full border-4 border-primary flex items-center justify-center transition-all shadow-[0_0_30px_oklch(0.6_0.2_150/0.3)] ${pulse ? "scale-105 shadow-lg shadow-primary/20" : ""}`}
         >
           <div className="text-center">
             <p className="text-5xl font-mono font-medium text-primary">
@@ -238,9 +238,14 @@ export function FocusTimer({ courses, assignments, onSessionComplete }: FocusTim
                   setDurationMins(mins);
                   setUseCustom(false);
                 }}
-                className={`px-4 py-2 rounded-full text-sm font-medium border transition-colors ${
+                style={
                   !useCustom && durationMins === mins
-                    ? "bg-primary text-primary-foreground border-primary"
+                    ? { background: "var(--gradient-primary)" }
+                    : undefined
+                }
+                className={`px-4 py-2 rounded-full text-sm font-medium border transition-all duration-200 hover:scale-[1.05] active:scale-[0.95] ${
+                  !useCustom && durationMins === mins
+                    ? "text-white shadow-[var(--shadow-sm)] border-transparent"
                     : "border-border text-foreground hover:bg-accent"
                 }`}
               >
@@ -249,9 +254,10 @@ export function FocusTimer({ courses, assignments, onSessionComplete }: FocusTim
             ))}
             <button
               onClick={() => setUseCustom(true)}
-              className={`px-4 py-2 rounded-full text-sm font-medium border transition-colors ${
+              style={useCustom ? { background: "var(--gradient-primary)" } : undefined}
+              className={`px-4 py-2 rounded-full text-sm font-medium border transition-all duration-200 hover:scale-[1.05] active:scale-[0.95] ${
                 useCustom
-                  ? "bg-primary text-primary-foreground border-primary"
+                  ? "text-white shadow-[var(--shadow-sm)] border-transparent"
                   : "border-border text-foreground hover:bg-accent"
               }`}
             >
@@ -345,7 +351,8 @@ export function FocusTimer({ courses, assignments, onSessionComplete }: FocusTim
           size="lg"
           onClick={handleStart}
           disabled={submitting || (useCustom && (!customMins || parseInt(customMins, 10) < 1))}
-          className="w-full gap-2"
+          className="w-full gap-2 text-white rounded-2xl shadow-[var(--shadow-md)] hover:shadow-[var(--shadow-lg)] transition-shadow"
+          style={{ background: "var(--gradient-primary)" }}
         >
           <Play className="h-4 w-4" />
           {submitting ? "Starting..." : `Start ${effectiveDuration} min session`}
@@ -361,6 +368,15 @@ export function FocusTimer({ courses, assignments, onSessionComplete }: FocusTim
         {/* Circular countdown */}
         <div className="relative w-52 h-52">
           <svg className="w-full h-full -rotate-90" viewBox="0 0 200 200">
+            <defs>
+              <filter id="glow">
+                <feGaussianBlur stdDeviation="4" result="blur" />
+                <feMerge>
+                  <feMergeNode in="blur" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+            </defs>
             <circle
               cx="100"
               cy="100"
@@ -381,6 +397,7 @@ export function FocusTimer({ courses, assignments, onSessionComplete }: FocusTim
               strokeDasharray={circumference}
               strokeDashoffset={strokeDashoffset}
               className="text-primary transition-all duration-1000 ease-linear"
+              filter="url(#glow)"
             />
           </svg>
           <div className="absolute inset-0 flex flex-col items-center justify-center">

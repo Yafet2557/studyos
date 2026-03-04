@@ -37,10 +37,12 @@ export function DailyBriefing({ cachedPlan }: { cachedPlan: string | null }) {
   }
 
   return (
-    <div className="rounded-lg border border-border bg-card h-fit overflow-hidden">
+    <div className="rounded-2xl border-0 bg-gradient-to-br from-primary/5 via-card to-primary/3 shadow-[var(--shadow-sm)] h-fit overflow-hidden">
       <div className="flex items-center justify-between px-5 py-4 border-b border-border/60">
-        <div className="flex items-center gap-2">
-          <Sparkles className="h-4 w-4 text-primary" />
+        <div className="flex items-center gap-2.5">
+          <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center">
+            <Sparkles className="h-4 w-4 text-primary" />
+          </div>
           <span className="text-sm font-semibold tracking-tight">Daily Briefing</span>
         </div>
         {plan && (
@@ -60,7 +62,7 @@ export function DailyBriefing({ cachedPlan }: { cachedPlan: string | null }) {
           <p className="text-sm leading-relaxed text-foreground/80 whitespace-pre-wrap">{plan}</p>
         ) : (
           <div className="flex flex-col items-center justify-center gap-4 py-8 text-center">
-            <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center">
               <Sparkles className="h-5 w-5 text-primary" />
             </div>
             <div>
@@ -70,7 +72,13 @@ export function DailyBriefing({ cachedPlan }: { cachedPlan: string | null }) {
               </p>
             </div>
             {error && <p className="text-xs text-destructive">{error}</p>}
-            <Button size="sm" onClick={() => generate(false)} disabled={loading} className="gap-1.5">
+            <Button
+              size="sm"
+              onClick={() => generate(false)}
+              disabled={loading}
+              className="gap-1.5 border-0 text-white shadow-[var(--shadow-sm)] hover:shadow-[var(--shadow-md)] hover:opacity-90 transition-all"
+              style={{ background: "var(--gradient-primary)" }}
+            >
               <Sparkles className="h-3.5 w-3.5" />
               {loading ? "Generating..." : "Generate Plan"}
             </Button>

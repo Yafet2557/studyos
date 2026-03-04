@@ -1,5 +1,6 @@
 import { prisma } from "@/lib/prisma";
 import { getUser } from "@/lib/auth-utils";
+import { auth } from "@/lib/auth";
 import { DailyBriefing } from "@/components/dashboard/daily-briefing";
 import { DashboardStats } from "@/components/dashboard/dashboard-stats";
 import { UpcomingAssignments } from "@/components/dashboard/upcoming-assignments";
@@ -8,6 +9,13 @@ import { CourseProgress } from "@/components/dashboard/course-progress";
 
 export default async function DashboardPage() {
   const userId = await getUser();
+
+  // Derive a display name from the session email (no name field in schema)
+  const session = await auth();
+  const email = session?.user?.email ?? "";
+  const displayName = email
+    ? email.split("@")[0].charAt(0).toUpperCase() + email.split("@")[0].slice(1)
+    : "";
 
   const now = new Date();
 
@@ -136,9 +144,23 @@ export default async function DashboardPage() {
     };
   });
 
+  const hour = now.getHours();
+  const greeting =
+    hour >= 5 && hour <= 11
+      ? "morning"
+      : hour >= 12 && hour <= 16
+        ? "afternoon"
+        : "evening";
+  const greetingLine = displayName
+    ? `Good ${greeting}, ${displayName}`
+    : `Good ${greeting}`;
+
   return (
     <div className="space-y-8">
-      <h1 className="text-3xl font-serif font-normal tracking-tight animate-fade-up">Dashboard</h1>
+      <div className="animate-fade-up">
+        <p className="text-sm text-muted-foreground mb-1">{greetingLine}</p>
+        <h1 className="text-3xl font-serif font-normal tracking-tight">Dashboard</h1>
+      </div>
 
       <DashboardStats
         overdueCount={overdueCount}
@@ -147,8 +169,10 @@ export default async function DashboardPage() {
         studyStreakDays={studyStreakDays}
       />
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <DailyBriefing cachedPlan={planText} />
+      <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-6">
+        <div className="lg:row-span-2">
+          <DailyBriefing cachedPlan={planText} />
+        </div>
         <div className="space-y-6">
           <UpcomingAssignments assignments={upcomingAssignments} />
           <RecentNotes notes={recentNotes} />

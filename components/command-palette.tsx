@@ -175,12 +175,12 @@ export function CommandPalette() {
   return (
     /* Overlay */
     <div
-      className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-start justify-center"
+      className="fixed inset-0 bg-black/30 backdrop-blur-md z-50 flex items-start justify-center"
       onClick={() => setOpen(false)}
     >
       {/* Dialog — stop clicks from bubbling to overlay */}
       <div
-        className="w-full max-w-lg mt-[20vh] bg-background border border-border rounded-xl shadow-2xl overflow-hidden"
+        className="glass w-full max-w-lg mt-[20vh] rounded-2xl shadow-[var(--shadow-lg)] overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
         <Command
@@ -193,7 +193,7 @@ export function CommandPalette() {
             <Command.Input
               autoFocus
               placeholder="Type a command or search..."
-              className="w-full px-4 py-3 text-base bg-transparent outline-none placeholder:text-muted-foreground text-foreground"
+              className="w-full px-5 py-4 text-lg bg-transparent outline-none placeholder:text-muted-foreground text-foreground"
             />
           </div>
 
@@ -215,7 +215,7 @@ export function CommandPalette() {
                     value={item.label}
                     disabled={item.disabled}
                     onSelect={item.action}
-                    className="px-4 py-2.5 flex items-center gap-3 text-sm cursor-pointer aria-selected:bg-accent aria-selected:text-accent-foreground aria-disabled:opacity-40 aria-disabled:cursor-not-allowed transition-colors"
+                    className="rounded-xl mx-2 px-3 py-2.5 flex items-center gap-3 text-sm cursor-pointer aria-selected:bg-primary/10 aria-selected:text-primary aria-disabled:opacity-40 aria-disabled:cursor-not-allowed transition-colors"
                   >
                     {/* Icon */}
                     <item.icon className="h-4 w-4 flex-shrink-0 text-muted-foreground" />
@@ -233,7 +233,7 @@ export function CommandPalette() {
                         {item.shortcut.split(" ").map((key) => (
                           <kbd
                             key={key}
-                            className="text-[10px] font-mono px-1.5 py-0.5 rounded border border-border bg-muted text-muted-foreground leading-none"
+                            className="text-[10px] font-mono px-1.5 py-0.5 rounded-md border border-primary/20 bg-primary/10 text-primary/70 leading-none"
                           >
                             {key}
                           </kbd>

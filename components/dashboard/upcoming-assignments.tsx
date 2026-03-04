@@ -21,7 +21,7 @@ export function UpcomingAssignments({
   assignments: AssignmentWithCourse[];
 }) {
   return (
-    <div className="rounded-lg border border-border bg-card overflow-hidden">
+    <div className="rounded-2xl bg-card overflow-hidden shadow-[var(--shadow-sm)]">
       <div className="px-5 py-4 border-b border-border/60">
         <span className="text-sm font-semibold tracking-tight">Upcoming</span>
       </div>
@@ -38,7 +38,7 @@ export function UpcomingAssignments({
               <Link
                 key={a.id}
                 href={`/assignments/${a.id}`}
-                className="flex items-center justify-between px-5 py-3 hover:bg-accent/50 transition-colors border-b border-border/40 last:border-b-0"
+                className="flex items-center justify-between px-5 py-3 hover:bg-primary/5 transition-colors border-b border-border/40 last:border-b-0"
               >
                 <div className="flex-1 min-w-0">
                   <p className="text-sm font-medium truncate">{a.title}</p>
@@ -54,13 +54,15 @@ export function UpcomingAssignments({
                     </div>
                   )}
                 </div>
-                <span
-                  className={`text-xs font-mono ml-4 whitespace-nowrap ${
-                    urgent ? "text-destructive font-medium" : "text-muted-foreground"
-                  }`}
-                >
-                  {label}
-                </span>
+                {urgent ? (
+                  <span className="rounded-lg bg-red-500/10 text-red-500 px-2 py-0.5 text-xs font-mono ml-4 whitespace-nowrap font-medium">
+                    {label}
+                  </span>
+                ) : (
+                  <span className="text-xs font-mono text-muted-foreground ml-4 whitespace-nowrap">
+                    {label}
+                  </span>
+                )}
               </Link>
             );
           })

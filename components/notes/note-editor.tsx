@@ -81,7 +81,7 @@ export function NoteEditor({ note }: { note: SerializedNote }) {
       </div>
 
       {preview ? (
-        <div className="prose prose-sm dark:prose-invert max-w-none overflow-auto rounded-md border border-input bg-muted/30 px-4 py-3 text-sm min-h-[400px]">
+        <div className="prose prose-sm dark:prose-invert max-w-none overflow-auto rounded-2xl border border-input bg-muted/30 px-4 py-3 text-sm min-h-[400px]">
           {content ? (
             <ReactMarkdown>{content}</ReactMarkdown>
           ) : (
@@ -90,7 +90,7 @@ export function NoteEditor({ note }: { note: SerializedNote }) {
         </div>
       ) : (
         <textarea
-          className="w-full flex-1 min-h-[400px] resize-none rounded-md border border-input bg-background px-3 py-2 text-sm font-mono focus:outline-none focus:ring-1 focus:ring-ring"
+          className="w-full flex-1 min-h-[400px] resize-none rounded-2xl border border-input bg-background px-3 py-2 text-sm font-mono focus:outline-none focus:ring-1 focus:ring-ring"
           value={content}
           onChange={(e) => setContent(e.target.value)}
           onBlur={saveContent}

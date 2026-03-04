@@ -149,7 +149,7 @@ export function StudyCardList({ cards, courses, notes }: StudyCardListProps) {
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           {cards.map((card) => (
-            <div key={card.id} className="relative group">
+            <div key={card.id} className="relative group hover:translate-y-[-1px] hover:shadow-[var(--shadow-md)] transition-all duration-300">
               <Card className="hover:border-border/80 transition-colors">
                 <CardContent className="p-4">
                   <p className="font-medium text-sm line-clamp-2">

@@ -48,11 +48,11 @@ export function CourseCard({ course, onEdit }: CourseCardProps) {
 
   return (
     <div className={cn("relative", !course.isActive && "opacity-60")}>
-      <Link href={`/courses/${course.id}`} className="block group">
+      <Link href={`/courses/${course.id}`} className="block group hover:translate-y-[-2px] hover:shadow-[var(--shadow-md)] transition-all duration-300">
         <Card
-          className="gap-0 py-0 overflow-hidden transition-shadow group-hover:shadow-md border-l-[3px]"
-          style={{ borderLeftColor: borderColor }}
+          className="gap-0 py-0 overflow-hidden"
         >
+          <div className="h-1 rounded-t-2xl" style={{ backgroundColor: borderColor }} />
           <CardContent className="p-4">
             <div className="flex items-start justify-between gap-2">
               <div className="flex-1 min-w-0 pr-1">
